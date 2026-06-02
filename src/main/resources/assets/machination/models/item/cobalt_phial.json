@@ -1,0 +1,6 @@
+{
+  "parent": "machination:item/phial",
+  "textures": {
+    "phial": "machination:item/cobalt_phial"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Cobalt",
+  "icon": "machination:raw_cobalt",
+  "category": "machination:phials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "Expedition Start",
+      "text": "$(l)Entry 1$(br)$()No one said journeying deep below the surface was particularly easy, let alone finding a rare, glistening metal engraved into the rock - but you start to do such crazy things after trying to $(k)communicate with literal gods,$() or even just trying to find their $(k)offspring or next of kin."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Entry 2$(br)$()It's intriguing just how confident one is before taking on such an incredibly important task, then just how quickly that confidence disappears when your down onto your last few torches and swiftly losing your way.$(br)I really should've been rou-$(br)$(br)$(o)The entry ends here."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "It's HERE",
+      "text": "$(l)Entry 5$(br)$()I've found it! Cobalt, glistening down almost in the darkest depths of the earth's shell! I perhaps prepared a bit too much for it's excavation, as it seems my initial attempt to break it with my $(l)Diamond Pickaxe$() has yielded no results, will test further..."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "IRON, THAT'S THE KEY",
+      "text": "$(l)Entry 5.1$(br)$()Iron! It seems Cobalt is far too fragile in it's natural form and must be extracted with a tool less powerful, such as Iron! Not only this, but it seems to yield quite a substantial amount, making up for it's natural rarity! I better harvest as much as I can before that monstrous beast $(k)comes crawling back again."
+    }
+  ]
+}

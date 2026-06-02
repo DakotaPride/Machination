@@ -1,0 +1,24 @@
+{
+  "use_phial_on_living_creature": {
+    "subtitle": "subtitles.machination.use_phial_on_living_creature",
+    "sounds": [
+      "minecraft:mob/warden/heartbeat_1",
+      "minecraft:mob/warden/heartbeat_2",
+      "minecraft:mob/warden/heartbeat_3",
+      "minecraft:mob/warden/heartbeat_4"
+    ]
+  },
+  "use_phial_on_living_creature_siphon": {
+    "subtitle": "subtitles.machination.use_phial_on_living_creature_siphon",
+    "sounds": [
+      "block/brewing_stand/brew1",
+      "block/brewing_stand/brew2"
+    ]
+  },
+  "use_phial_on_divine_being": {
+    "subtitle": "subtitles.machination.use_phial_on_divine_being",
+    "sounds": [
+      "minecraft:mob/irongolem/repair"
+    ]
+  }
+}

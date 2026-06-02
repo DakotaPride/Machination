@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " # ",
+    "DSD",
+    " D "
+  ],
+  "key": {
+    "#": {
+      "item": "machination:cobalt_phial_ender_dragon"
+    },
+    "D": {
+      "item": "minecraft:dragon_breath"
+    },
+    "S": {
+      "item": "machination:soul_bottle"
+    }
+  },
+  "result": {
+    "item": "machination:flask_of_desolatic_burst"
+  }
+}

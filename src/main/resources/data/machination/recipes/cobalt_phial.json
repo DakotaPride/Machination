@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "show_notification": true,
+  "category": "equipment",
+  "pattern": [
+    " C ",
+    "CNC",
+    "SGS"
+  ],
+  "key": {
+    "C": {
+      "item": "machination:cobalt_ingot"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "S": {
+      "tag": "minecraft:soul_fire_base_blocks"
+    },
+    "G": {
+      "tag": "forge:glass"
+    }
+  },
+  "result": {
+    "item": "machination:cobalt_phial"
+  }
+}

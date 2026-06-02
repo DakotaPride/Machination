@@ -1,0 +1,17 @@
+{
+  "type": "patchouli:shaped_book_recipe",
+  "key": {
+    "#": {
+      "item": "machination:cobalt_ingot"
+    },
+    "B": {
+      "item": "minecraft:book"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#B#",
+    " # "
+  ],
+  "book": "machination:xylotol_journal"
+}

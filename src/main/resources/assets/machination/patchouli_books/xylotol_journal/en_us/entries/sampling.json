@@ -1,0 +1,18 @@
+{
+  "name": "Sampling Divinity",
+  "icon": "machination:cobalt_phial_ender_dragon",
+  "category": "machination:phials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Notes$(br)$()What defines a divine being? Such creatures surely are few and far between! But, regardless of that, I think I have a good starting point to take some guesses...$(br)$(br)$(l)Oinking Protectors of Ash-Struck Monument$(br)$()These vile beasts have to be blessed by an ancient swine deity to be so deadly compared to their rugged counterparts!"
+    },
+    {
+      "type": "patchouli:entity",
+      "title": " ",
+      "entity": "minecraft:piglin_brute",
+      "rotate": false,
+      "default_rotation": 45
+    }
+  ]
+}

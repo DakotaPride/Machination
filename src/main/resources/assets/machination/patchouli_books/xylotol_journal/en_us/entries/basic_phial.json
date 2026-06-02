@@ -1,0 +1,33 @@
+{
+  "name": "Cobalt Phial",
+  "icon": "machination:cobalt_phial",
+  "category": "machination:phials",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "machination:cobalt_phial",
+      "text": "Fascinating! Melding together the souls of the damned, an alloy forged from pure hellfire, and a metal found deep beneath the earth's surface can create a tool capable of extracting the very lifeforce of other beings!$(br)$(br)More research is necessary, but perhaps it's capable of even harnessing the very power of the gods!"
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "Creation",
+      "recipe": "machination:cobalt_phial"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Notes$(br)$()Experimenting further, it appears that this metal can actually be manipulated quite easily and even serve as a nice touch for decorative purposes! I've already entombed my findings within the very metal it documents!"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Entry 19$(br)$()After a tight situation in a treacherous monument built from ash-struck rock, constructed within a gilded age long forgotten, I managed to test my new tool on one of it's protectors! The divine energy stored within the vassal surged through the Cobalt needle and now surges through the Phial's core as I jot this succession down!"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Entry 21$(br)$()The run-in with that blessed pig gave me a general idea about what other creatures may be holding divine energy within themselves - specifically, a sunken temple lot to time that is guarded by the ever persistent, spiked pests... Three elders locked away safely within their chambers in an attempt to help ward off travellers from seeking out their otherwise passive home."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "These elders seem to wield a power bestowed by a higher being, the ability to inflict nearby sailors with an ailment weakening their physical state, and thus preventing them from simply breaking into the temple, forcing those desperate enough to ignore such a curse to traverse the maze that covers the innards of the temple. No matter, I shall find a way to bypass this ancient power.$(br)$(br)I must research further!"
+    }
+  ]
+}

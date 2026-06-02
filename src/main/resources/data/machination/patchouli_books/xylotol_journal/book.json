@@ -1,0 +1,12 @@
+{
+  "name": "Glistening Journal",
+  "subtitle": "By Professor Xylotol",
+  "landing_text": "Professor Xylotol's findings regarding Cobalt and the samples found within greater beings - the blessed and the blessers.",
+  "version": 0,
+  "show_progress": false,
+  "use_resource_pack": true,
+  "book_texture": "patchouli:textures/gui/book_blue.png",
+  "model": "machination:xylotol_journal",
+  "creative_tab": "machination:machination_tab",
+  "i18n": false
+}

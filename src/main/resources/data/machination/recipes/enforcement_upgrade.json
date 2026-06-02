@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:gold_ingot"
+    },
+    "P": {
+      "item": "machination:cobalt_phial_piglin_brute"
+    },
+    "S": {
+      "item": "minecraft:netherite_upgrade_smithing_template"
+    },
+    "B": {
+      "item": "minecraft:blackstone"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "BPB",
+    "#B#"
+  ],
+  "result": {
+    "item": "machination:enforcement_upgrade"
+  },
+  "show_notification": true
+}

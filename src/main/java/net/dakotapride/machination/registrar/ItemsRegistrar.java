@@ -30,6 +30,7 @@ public class ItemsRegistrar {
     public static RegistryObject<FilledCobaltPhialItem> COBALT_PHIAL_ELDER_GUARDIAN = registerFilledCobaltPhialItem(DivineBeings.ELDER_GUARDIAN);
     public static RegistryObject<FilledCobaltPhialItem> COBALT_PHIAL_PIGLIN_BRUTE = registerFilledCobaltPhialItem(DivineBeings.PIGLIN_BRUTE);
     public static RegistryObject<FilledCobaltPhialItem> COBALT_PHIAL_GUARDIAN = registerFilledCobaltPhialItem(DivineBeings.GUARDIAN);
+    public static RegistryObject<Item> SOUL_BOTTLE = ITEMS.register("soul_bottle", () -> new Item(new Item.Properties()));
 
     // Wither
     public static RegistryObject<WitheringBashItem> WITHERING_BASH = ITEMS.register("withering_bash", () -> new WitheringBashItem(new Item.Properties().stacksTo(1)));
@@ -83,8 +84,6 @@ public class ItemsRegistrar {
             ItemsRegistrar::createEnforcementUpgradeTemplate);
     public static RegistryObject<EnforcedGearItem> ENFORCED_CHESTPLATE = ITEMS.register("enforced_chestplate",
             () -> new EnforcedGearItem(ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1).fireResistant()));
-
-    public static RegistryObject<Item> SOUL_BOTTLE = ITEMS.register("soul_bottle", () -> new Item(new Item.Properties()));
 
     private static RegistryObject<FilledCobaltPhialItem> registerFilledCobaltPhialItem(DivineBeings divineBeing) {
         return ITEMS.register("cobalt_phial_" + divineBeing.getId(), () -> new FilledCobaltPhialItem(divineBeing, new Item.Properties().stacksTo(1).craftRemainder(ItemsRegistrar.COBALT_PHIAL.get())));

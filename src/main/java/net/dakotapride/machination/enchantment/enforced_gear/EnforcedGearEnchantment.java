@@ -12,7 +12,6 @@ public class EnforcedGearEnchantment extends Enchantment {
 
     @Override
     protected boolean checkCompatibility(@NotNull Enchantment enchantment) {
-        //return enchantment instanceof FinalStandEnchantment;
-        return true;
+        return enchantment instanceof BulwartEnchantment;
     }
 }

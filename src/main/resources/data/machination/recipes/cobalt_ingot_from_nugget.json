@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "cobalt_ingot",
+  "key": {
+    "#": {
+      "item": "machination:cobalt_nugget"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "machination:cobalt_ingot"
+  },
+  "show_notification": true
+}

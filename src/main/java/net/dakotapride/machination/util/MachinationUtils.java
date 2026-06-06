@@ -1,6 +1,7 @@
 package net.dakotapride.machination.util;
 
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 
 public class MachinationUtils {
     public static void createCooldown(Player player, int cooldown) {
@@ -12,6 +13,13 @@ public class MachinationUtils {
         if (!player.getAbilities().instabuild) {
             player.getCooldowns().addCooldown(player.getItemInHand(player.getUsedItemHand()).getItem(), 20 * cooldown);
             player.getItemInHand(player.getUsedItemHand()).shrink(decrement);
+        }
+    }
+
+    public static void createCooldownAndDecrement(Player player, ItemStack stack, int cooldown, int decrement) {
+        if (!player.getAbilities().instabuild) {
+            player.getCooldowns().addCooldown(stack.getItem(), 20 * cooldown);
+            stack.shrink(decrement);
         }
     }
 }

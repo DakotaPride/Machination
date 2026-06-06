@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "machination:enforced_chestplate"
+    },
+    "title": {
+      "translate": "advancement.machination.enforced_gear_bulwart.title"
+    },
+    "description": {
+      "translate": "advancement.machination.enforced_gear_bulwart.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "machination:enforced_gear",
+  "criteria": {
+    "enforced_gear_bulwart": {
+      "trigger": "machination:bulwart_used"
+    }
+  },
+  "requirements": [
+    [
+      "enforced_gear_bulwart"
+    ]
+  ]
+}

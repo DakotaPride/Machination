@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "machination:shadowkin_growth"
+    },
+    "title": {
+      "translate": "advancement.machination.shadowkin_gear_infect.title"
+    },
+    "description": {
+      "translate": "advancement.machination.shadowkin_gear_infect.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "machination:shadowkin_growth",
+  "criteria": {
+    "infect_used": {
+      "trigger": "machination:infect_used"
+    }
+  },
+  "requirements": [
+    [
+      "infect_used"
+    ]
+  ]
+}

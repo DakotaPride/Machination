@@ -23,7 +23,7 @@ public abstract class AbstractHurtingProjectileMixin extends Projectile {
         this.level = level;
     }
 
-    @Inject(method = "tick", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo ci) {
         if (projectile instanceof WitherSkull skull && skull.getTags().contains("FromWitheringBashProjectile")) {
             CompoundTag tag = skull.getPersistentData();

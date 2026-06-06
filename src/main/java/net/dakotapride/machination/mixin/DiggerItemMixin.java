@@ -14,16 +14,9 @@ public abstract class DiggerItemMixin extends TieredItem implements Vanishable {
         super(tier, p_43309_);
     }
 
-    @Inject(method = "isCorrectToolForDrops(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/block/state/BlockState;)Z", at = @At("HEAD"), cancellable = true)
+    @Inject(remap = false, method = "isCorrectToolForDrops(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/level/block/state/BlockState;)Z", at = @At("HEAD"), cancellable = true)
     private void isCorrectToolForDrops(ItemStack stack, BlockState state, CallbackInfoReturnable<Boolean> cir) {
         if (stack.getItem() instanceof DiggerItem diggerItem && diggerItem.getTier() != Tiers.IRON && state.getBlock() instanceof CobaltOreBlock)
-            cir.setReturnValue(false);
-    }
-
-    @Inject(method = "isCorrectToolForDrops(Lnet/minecraft/world/level/block/state/BlockState;)Z", at = @At("HEAD"), cancellable = true)
-    private void isCorrectToolForDropsTwo(BlockState state, CallbackInfoReturnable<Boolean> cir) {
-        DiggerItem diggerItem = (DiggerItem) (Object) this;
-        if (diggerItem.getTier() != Tiers.IRON && state.getBlock() instanceof CobaltOreBlock)
             cir.setReturnValue(false);
     }
 }

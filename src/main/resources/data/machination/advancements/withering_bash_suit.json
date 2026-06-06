@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "machination:withering_bash"
+    },
+    "title": {
+      "translate": "advancement.machination.withering_bash_suit.title"
+    },
+    "description": {
+      "translate": "advancement.machination.withering_bash_suit.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "machination:withering_bash_projectile_collide",
+  "criteria": {
+    "withering_bash_suit": {
+      "trigger": "machination:withering_bash_suit"
+    }
+  },
+  "requirements": [
+    [
+      "withering_bash_suit"
+    ]
+  ]
+}

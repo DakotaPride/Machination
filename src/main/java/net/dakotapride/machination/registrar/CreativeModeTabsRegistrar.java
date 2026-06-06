@@ -28,12 +28,15 @@ public class CreativeModeTabsRegistrar {
                         output.accept(ItemsRegistrar.COBALT_PHIAL_GUARDIAN.get());
                         output.accept(BlocksRegistrar.COBALT_ORE.get());
                         output.accept(BlocksRegistrar.DEEPSLATE_COBALT_ORE.get());
+                        output.accept(BlocksRegistrar.NETHERRACK_COBALT_ORE.get());
                         output.accept(BlocksRegistrar.COBALT_BLOCK.get());
                         output.accept(ItemsRegistrar.SOUL_BOTTLE.get());
                         output.accept(ItemsRegistrar.WITHERING_BASH.get());
                         output.accept(ItemsRegistrar.FLASK_OF_DESOLATIC_BURST.get());
+                        output.accept(ItemsRegistrar.SHADOWKIN_GROWTH.get());
                         output.accept(ItemsRegistrar.ENFORCEMENT_UPGRADE.get());
                         output.accept(ItemsRegistrar.ENFORCED_CHESTPLATE.get());
+                        output.accept(ItemsRegistrar.PRISMATIC_SHUFFLER.get());
                     }).build());
 
     public static void worshipOurToxicYuriAIOverlords(IEventBus bus) {

@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "machination:cobalt_phial"
+    },
+    "title": {
+      "translate": "advancement.machination.cobalt_phial.title"
+    },
+    "description": {
+      "translate": "advancement.machination.cobalt_phial.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "machination:cobalt",
+  "criteria": {
+    "use_cobalt_phial": {
+      "trigger": "machination:use_cobalt_phial"
+    }
+  },
+  "requirements": [
+    [
+      "use_cobalt_phial"
+    ]
+  ]
+}

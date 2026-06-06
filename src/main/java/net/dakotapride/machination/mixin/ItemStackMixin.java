@@ -17,7 +17,7 @@ public class ItemStackMixin {
 
     @Inject(method = "hurt", at = @At("HEAD"))
     private void hurt(int amount, RandomSource random, ServerPlayer serverPlayer, CallbackInfoReturnable<Boolean> cir) {
-        if (EnforcedGearItem.hasGildedSkinEnchantment(serverPlayer)) {
+        if (serverPlayer != null && EnforcedGearItem.hasGildedSkinEnchantment(serverPlayer)) {
             int l = stack.getDamageValue() + (amount * 2);
             stack.setDamageValue(l);
         }

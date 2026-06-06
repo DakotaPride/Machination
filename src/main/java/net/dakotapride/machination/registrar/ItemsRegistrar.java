@@ -32,11 +32,16 @@ public class ItemsRegistrar {
     public static RegistryObject<FilledCobaltPhialItem> COBALT_PHIAL_GUARDIAN = registerFilledCobaltPhialItem(DivineBeings.GUARDIAN);
     public static RegistryObject<Item> SOUL_BOTTLE = ITEMS.register("soul_bottle", () -> new Item(new Item.Properties()));
 
+    // Ender Dragon
+    public static RegistryObject<FlaskOfDesolaticBurstItem> FLASK_OF_DESOLATIC_BURST = ITEMS.register("flask_of_desolatic_burst", () -> new FlaskOfDesolaticBurstItem(new Item.Properties().stacksTo(16)));
+
     // Wither
     public static RegistryObject<WitheringBashItem> WITHERING_BASH = ITEMS.register("withering_bash", () -> new WitheringBashItem(new Item.Properties().stacksTo(1)));
 
-    // Ender Dragon
-    public static RegistryObject<FlaskOfDesolaticBurstItem> FLASK_OF_DESOLATIC_BURST = ITEMS.register("flask_of_desolatic_burst", () -> new FlaskOfDesolaticBurstItem(new Item.Properties().stacksTo(16)));
+    // Warden
+    public static RegistryObject<ShadowkinGearItem> SHADOWKIN_GROWTH = ITEMS.register("shadowkin_growth", () -> new ShadowkinGearItem(ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    // Elder Guardian
 
     // Piglin Brute
     private static final ChatFormatting TITLE_FORMAT = ChatFormatting.GRAY;
@@ -84,6 +89,9 @@ public class ItemsRegistrar {
             ItemsRegistrar::createEnforcementUpgradeTemplate);
     public static RegistryObject<EnforcedGearItem> ENFORCED_CHESTPLATE = ITEMS.register("enforced_chestplate",
             () -> new EnforcedGearItem(ArmorItem.Type.CHESTPLATE, new Item.Properties().stacksTo(1).fireResistant()));
+
+    // Guardian
+    public static RegistryObject<Item> PRISMATIC_SHUFFLER = ITEMS.register("prismatic_shuffler", () -> new PrismaticShufflerItem(new Item.Properties().stacksTo(1)));
 
     private static RegistryObject<FilledCobaltPhialItem> registerFilledCobaltPhialItem(DivineBeings divineBeing) {
         return ITEMS.register("cobalt_phial_" + divineBeing.getId(), () -> new FilledCobaltPhialItem(divineBeing, new Item.Properties().stacksTo(1).craftRemainder(ItemsRegistrar.COBALT_PHIAL.get())));

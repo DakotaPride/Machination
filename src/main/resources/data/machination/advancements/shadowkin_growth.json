@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "item": "machination:shadowkin_growth"
+    },
+    "title": {
+      "translate": "advancement.machination.shadowkin_gear.title"
+    },
+    "description": {
+      "translate": "advancement.machination.shadowkin_gear.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "machination:sample_divine_being",
+  "criteria": {
+    "shadowkin_gear": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "machination:shadowkin_growth"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "shadowkin_gear"
+    ]
+  ]
+}

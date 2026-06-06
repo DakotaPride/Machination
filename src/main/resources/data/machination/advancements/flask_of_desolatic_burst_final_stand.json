@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "machination:flask_of_desolatic_burst"
+    },
+    "title": {
+      "translate": "advancement.machination.flask_of_desolatic_burst_final_stand.title"
+    },
+    "description": {
+      "translate": "advancement.machination.flask_of_desolatic_burst_final_stand.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "machination:flask_of_desolatic_burst",
+  "criteria": {
+    "flask_of_desolatic_burst_final_stand": {
+      "trigger": "machination:final_stand"
+    }
+  },
+  "requirements": [
+    [
+      "flask_of_desolatic_burst_final_stand"
+    ]
+  ]
+}

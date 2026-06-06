@@ -20,7 +20,13 @@ public enum MachinationArmourMaterials implements StringRepresentable, ArmorMate
         typeProtection.put(ArmorItem.Type.LEGGINGS, 6);
         typeProtection.put(ArmorItem.Type.CHESTPLATE, 8);
         typeProtection.put(ArmorItem.Type.HELMET, 3);
-    }), 10, SoundEvents.ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> Ingredient.of(Items.PRISMARINE_SHARD)),;
+    }), 10, SoundEvents.ARMOR_EQUIP_NETHERITE, 2.0F, 0.0F, () -> Ingredient.of(Items.GOLD_INGOT)),
+    SHADOWKIN("shadowkin", 33, Util.make(new EnumMap<>(ArmorItem.Type.class), (typeProtection) -> {
+        typeProtection.put(ArmorItem.Type.BOOTS, 1);
+        typeProtection.put(ArmorItem.Type.LEGGINGS, 2);
+        typeProtection.put(ArmorItem.Type.CHESTPLATE, 4);
+        typeProtection.put(ArmorItem.Type.HELMET, 1);
+    }), 18, SoundEvents.SCULK_BLOCK_SPREAD, 0.0F, 0.0F, () -> Ingredient.of(Items.SCULK)),;
 
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (typeProtection) -> {
         typeProtection.put(ArmorItem.Type.BOOTS, 13);

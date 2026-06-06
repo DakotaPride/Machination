@@ -1,0 +1,5 @@
+{
+  "type": "combo",
+  "flowers": ["minecraft:kelp", "minecraft:fire_coral"],
+  "enchantment": "machination:sharptooth"
+}

@@ -1,0 +1,5 @@
+{
+  "type": "combo",
+  "flowers": ["minecraft:crimson_fungus", "minecraft:warped_fungus"],
+  "enchantment": "machination:bulwart"
+}

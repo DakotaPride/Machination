@@ -1,0 +1,5 @@
+{
+  "type": "combo",
+  "flowers": ["minecraft:chorus_fruit", "minecraft:nether_wart"],
+  "enchantment": "machination:arsonist"
+}

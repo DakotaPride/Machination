@@ -1,0 +1,5 @@
+{
+  "type": "combo",
+  "flowers": ["minecraft:nether_wart", "minecraft:golden_nugget"],
+  "enchantment": "machination:gilded_skin"
+}

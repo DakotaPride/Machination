@@ -6,7 +6,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "machination:cobalt_phial",
-      "text": "Fascinating! Melding together the souls of the damned, an alloy forged from pure hellfire, and a metal found deep beneath the earth's surface can create a tool capable of extracting the very lifeforce of other beings!$(br)$(br)More research is necessary, but perhaps it's capable of even harnessing the very power of the gods!"
+      "text": "Fascinating! Melding together the souls of the damned, an alloy forged from pure hellfire, and a metal found in such a focused source of heat can create a tool capable of extracting the very lifeforce of other beings!$(br)$(br)More research is necessary, but perhaps it's capable of even harnessing the very power of the gods!"
     },
     {
       "type": "patchouli:crafting",
@@ -23,11 +23,15 @@
     },
     {
       "type": "patchouli:text",
-      "text": "$(l)Entry 21$(br)$()The run-in with that blessed pig gave me a general idea about what other creatures may be holding divine energy within themselves - specifically, a sunken temple lot to time that is guarded by the ever persistent, spiked pests... Three elders locked away safely within their chambers in an attempt to help ward off travellers from seeking out their otherwise passive home."
+      "text": "$(l)Entry 21$(br)$()The run-in with that blessed pig gave me a general idea about what other creatures may be holding divine energy within themselves - specifically, a sunken temple lost to time that is guarded by the ever persistent, spiked pests... Three elders locked away safely within their chambers in an attempt to help ward off travellers from seeking out their otherwise passive home."
     },
     {
       "type": "patchouli:text",
       "text": "These elders seem to wield a power bestowed by a higher being, the ability to inflict nearby sailors with an ailment weakening their physical state, and thus preventing them from simply breaking into the temple, forcing those desperate enough to ignore such a curse to traverse the maze that covers the innards of the temple. No matter, I shall find a way to bypass this ancient power.$(br)$(br)I must research further!"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Entry 24$(br)$()It seems as though the spiked pests that swim about the magnificent structure have provided me with their downfall - the blessed energy coursing through their tough shells!$(br)$(br)Using this energy, I've been able to create a tool that negates against the Elders' ancient power. Perhaps it can serve other capabilities as well through mystical imbuement..."
     }
   ]
 }

@@ -1,0 +1,5 @@
+{
+  "type": "combo",
+  "flowers": ["minecraft:sculk_vein", "minecraft:red_tulip"],
+  "enchantment": "machination:catatonic"
+}

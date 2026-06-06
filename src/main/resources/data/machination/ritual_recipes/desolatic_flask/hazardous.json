@@ -1,0 +1,5 @@
+{
+  "type": "combo",
+  "flowers": ["minecraft:chorus_fruit", "minecraft:lily_of_the_valley"],
+  "enchantment": "machination:hazardous"
+}

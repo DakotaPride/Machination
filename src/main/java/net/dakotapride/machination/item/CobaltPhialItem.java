@@ -116,10 +116,7 @@ public class CobaltPhialItem extends Item {
                 if (target.getType() == entityType && !stack.isEnchanted()) {
                     if (!player.getAbilities().instabuild)
                         MachinationUtils.createCooldown(player, 300);
-                    ItemStack filledStack = new ItemStack(phialItem);
-                    if (stack.getTag() != null)
-                        filledStack.setTag(stack.getTag().copy());
-                    player.setItemInHand(hand, filledStack);
+                    player.setItemInHand(hand, new ItemStack(phialItem));
                 }
             }
             return InteractionResult.SUCCESS;

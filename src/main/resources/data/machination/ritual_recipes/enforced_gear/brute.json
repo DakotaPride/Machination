@@ -1,0 +1,5 @@
+{
+  "type": "combo",
+  "flowers": ["minecraft:nether_wart", "minecraft:golden_ingot"],
+  "enchantment": "machination:brute"
+}

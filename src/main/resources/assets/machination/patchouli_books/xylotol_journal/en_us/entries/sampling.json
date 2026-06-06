@@ -9,10 +9,36 @@
     },
     {
       "type": "patchouli:entity",
-      "title": " ",
       "entity": "minecraft:piglin_brute",
       "rotate": false,
       "default_rotation": 45
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Spiked Pests$(br)$()Somehow the lesser creatures who happen to be granted divine ordinance are always the annoying ones - and this seems no different. Beams of harmful, strange power emit from their eye socket once their target has the misfortune of swimming into their line of sight."
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:guardian",
+      "rotate": false,
+      "default_rotation": 45,
+      "scale": 0.65
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Elders$(br)$()$(o)Not yet researched"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Three-headed Monstrosity$(br)$()$(o)Not yet researched"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Prisoner of Mold, yet it's Peacekeeper$(br)$()$(o)Not yet researched"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Beast of Savage, Desolatic Energy$(br)$()$(o)Not yet researched"
     }
   ]
 }

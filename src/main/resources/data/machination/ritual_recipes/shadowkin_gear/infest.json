@@ -1,5 +1,5 @@
 {
   "type": "combo",
-  "flowers": ["minecraft:sculk_vein", "minecraft:sculk"],
+  "flowers": ["minecraft:sculk_catalyst", "minecraft:sculk"],
   "enchantment": "machination:infest"
 }

@@ -1,5 +1,0 @@
-{
-  "type": "combo",
-  "flowers": ["minecraft:sculk_vein", "minecraft:sculk_catalyst"],
-  "enchantment": "machination:hivemind"
-}

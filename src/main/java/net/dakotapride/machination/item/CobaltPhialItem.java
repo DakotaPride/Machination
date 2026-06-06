@@ -21,9 +21,14 @@ import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Map;
 
 public class CobaltPhialItem extends Item {
     boolean isEmptyPhial;
@@ -50,7 +55,7 @@ public class CobaltPhialItem extends Item {
         return EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistrar.BONK.get(), player) > 0;
     }
 
-    public static boolean hasSquishEnchantment(Player player) {
+    public static boolean hasPuppyEnchantment(Player player) {
         return EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistrar.PUPPY.get(), player) > 0;
     }
 
@@ -59,59 +64,62 @@ public class CobaltPhialItem extends Item {
         return ItemsRegistrar.COBALT_PHIAL.get().getDescriptionId();
     }
 
-    public static void applyInjectionEffects(Player player, LivingEntity livingEntity, float damage) {
+    public static void applyInjectionEffects(Player player, ItemStack stack, LivingEntity livingEntity, float damage) {
         livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 100));
         livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 100));
 
-        if (hasSiphonEnchantment(player))
+        if (hasSiphonEnchantment(player) && !(stack.getItem() instanceof FilledCobaltPhialItem))
             player.heal(damage);
         else livingEntity.hurt(livingEntity.damageSources().generic(), damage);
 
-        if (hasBonkEnchantment(player)) {
+        if (hasBonkEnchantment(player) && !(stack.getItem() instanceof FilledCobaltPhialItem)) {
             livingEntity.knockback(2.5D, Mth.sin(livingEntity.getYRot() * ((float)Math.PI / 180F)), (-Mth.cos(livingEntity.getYRot() * ((float)Math.PI / 180F))));
             livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().multiply(0.6D, 1.0D, 0.6D));
         } else livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 100));
 
-        if (hasSquishEnchantment(player) && livingEntity instanceof ServerPlayer playerTarget)
+        if (hasPuppyEnchantment(player) && livingEntity instanceof ServerPlayer playerTarget && !(stack.getItem() instanceof FilledCobaltPhialItem))
             playerTarget.addTag("StunlockedFromCuteness");
 
-        if (player instanceof ServerPlayer serverPlayer) {
+        if (player instanceof ServerPlayer serverPlayer && !(stack.getItem() instanceof FilledCobaltPhialItem)) {
             AdvancementRegistrar.USE_COBALT_PHIAL.trigger(serverPlayer);
             if (livingEntity.getType().is(EntityTypeTags.DIVINE_BEINGS))
                 AdvancementRegistrar.SAMPLE_DIVINE_BEING.trigger(serverPlayer);
         }
     }
 
-    public static void applyInjectionEffects(Player player, EnderDragonPart part, DamageSource source, float damage) {
+    public static void applyInjectionEffects(Player player, ItemStack stack, EnderDragonPart part, DamageSource source, float damage) {
         EnderDragon enderDragon = part.getParent();
         enderDragon.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 100));
         enderDragon.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 100));
         enderDragon.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 100));
-        if (hasSiphonEnchantment(player))
+        if (hasSiphonEnchantment(player) && !(stack.getItem() instanceof FilledCobaltPhialItem))
             player.heal(damage);
         else enderDragon.hurt(part, source, damage);
 
-        if (player instanceof ServerPlayer serverPlayer) {
+        if (player instanceof ServerPlayer serverPlayer && !(stack.getItem() instanceof FilledCobaltPhialItem)) {
             AdvancementRegistrar.USE_COBALT_PHIAL.trigger(serverPlayer);
             if (enderDragon.getType().is(EntityTypeTags.DIVINE_BEINGS))
                 AdvancementRegistrar.SAMPLE_DIVINE_BEING.trigger(serverPlayer);
         }
     }
 
-    public static void applyInjectionEffects(Player player, LivingEntity livingEntity) {
+    public static void applyInjectionEffects(Player player, ItemStack stack, LivingEntity livingEntity) {
         float percentHealth = livingEntity.getMaxHealth() / 10;
         float actualDamage = livingEntity.getHealth() <= percentHealth ? livingEntity.getHealth() / 10 : percentHealth;
-        applyInjectionEffects(player, livingEntity, actualDamage);
+        applyInjectionEffects(player, stack, livingEntity, actualDamage);
     }
 
     public InteractionResult createNewPhialInteraction(Player player, ItemStack stack, LivingEntity target, InteractionHand hand, Level level, FilledCobaltPhialItem phialItem, EntityType<?> entityType) {
         if (!player.getCooldowns().isOnCooldown(stack.getItem()) && this.isEmptyPhial()) {
-            CobaltPhialItem.applyInjectionEffects(player, target);
+            CobaltPhialItem.applyInjectionEffects(player, stack, target);
             if (!level.isClientSide) {
                 if (target.getType() == entityType && !stack.isEnchanted()) {
                     if (!player.getAbilities().instabuild)
                         MachinationUtils.createCooldown(player, 300);
-                    player.setItemInHand(hand, new ItemStack(phialItem));
+                    ItemStack filledStack = new ItemStack(phialItem);
+                    if (stack.getTag() != null)
+                        filledStack.setTag(stack.getTag().copy());
+                    player.setItemInHand(hand, filledStack);
                 }
             }
             return InteractionResult.SUCCESS;

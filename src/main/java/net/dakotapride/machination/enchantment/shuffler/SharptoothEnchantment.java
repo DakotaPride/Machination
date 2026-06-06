@@ -20,10 +20,11 @@ public class SharptoothEnchantment extends ShufflerEnchantment {
 
     @Override
     public float getDamageBonus(int i, MobType mobType, ItemStack itemStack) {
-        float f = 3.0F;
+        float damageBonus = 3.0F;
         if (itemStack.getEnchantmentLevel(EnchantmentRegistrar.EXPIRE.get()) > 0 && mobType != MobType.WATER) {
-            f = f * 1.4F;
-        }
-        return f;
+            damageBonus = damageBonus * 1.4F;
+        } else if (itemStack.getEnchantmentLevel(EnchantmentRegistrar.REFRESHING.get()) > 0 && mobType == MobType.WATER)
+            damageBonus = damageBonus * 1.6F;
+        return damageBonus;
     }
 }

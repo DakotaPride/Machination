@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "machination:prismatic_shuffler"
+    },
+    "title": {
+      "translate": "advancement.machination.prismatic_shuffler_skewer.title"
+    },
+    "description": {
+      "translate": "advancement.machination.prismatic_shuffler_skewer.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "machination:prismatic_shuffler",
+  "criteria": {
+    "prismatic_shuffler_skewer": {
+      "trigger": "machination:skewer"
+    }
+  },
+  "requirements": [
+    [
+      "prismatic_shuffler_skewer"
+    ]
+  ]
+}

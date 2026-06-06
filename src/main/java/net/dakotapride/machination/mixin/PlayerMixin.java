@@ -47,17 +47,6 @@ public abstract class PlayerMixin extends LivingEntity {
             }
         }
 
-        if (player.getTags().contains("SubnauticFromPrismaticShuffler")) {
-            int subnauticTicks = tag.getInt("SubnauticTicks");
-            if (subnauticTicks >= 200) {
-                player.removeTag("SubnauticFromPrismaticShuffler");
-                tag.putInt("SubnauticTicks", 0);
-            } else {
-                subnauticTicks++;
-                tag.putInt("SubnauticTicks", subnauticTicks);
-            }
-        }
-
         if (player.getTags().contains("HasSteppedOnSculkRecently")) {
             int shadowkinBenefitsRemovalTicks = tag.getInt("ShadowkinBenefitsRemovalTicks");
             if (shadowkinBenefitsRemovalTicks >= 60) {

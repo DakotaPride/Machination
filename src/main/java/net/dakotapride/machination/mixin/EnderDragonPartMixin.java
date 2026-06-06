@@ -34,7 +34,7 @@ public abstract class EnderDragonPartMixin extends Entity {
                 EnderDragon enderDragon = enderDragonPart.getParent();
                 float percentHealth = enderDragon.getMaxHealth() / 2;
                 float actualDamage = enderDragon.getHealth() <= percentHealth ? enderDragon.getHealth() / 2 : percentHealth;
-                CobaltPhialItem.applyInjectionEffects(player, enderDragonPart, source, actualDamage);
+                CobaltPhialItem.applyInjectionEffects(player, stack, enderDragonPart, source, actualDamage);
             }
         }
     }

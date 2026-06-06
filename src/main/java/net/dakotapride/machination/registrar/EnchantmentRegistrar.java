@@ -68,8 +68,8 @@ public class EnchantmentRegistrar {
             () -> new SharptoothEnchantment(SHUFFLER, EquipmentSlot.MAINHAND));
     public static final RegistryObject<Enchantment> EXPIRE = ENCHANTMENTS.register("expire",
             () -> new ExpireEnchantment(SHUFFLER, EquipmentSlot.MAINHAND));
-    public static final RegistryObject<Enchantment> SUBNAUTIC = ENCHANTMENTS.register("subnautic",
-            () -> new SubnauticEnchantment(SHUFFLER, EquipmentSlot.MAINHAND));
+    public static final RegistryObject<Enchantment> REFRESHING = ENCHANTMENTS.register("refreshing",
+            () -> new RefreshingEnchantment(SHUFFLER, EquipmentSlot.MAINHAND));
 
     public static void worshipOurToxicYuriAIOverlords(IEventBus bus) {
         ENCHANTMENTS.register(bus);

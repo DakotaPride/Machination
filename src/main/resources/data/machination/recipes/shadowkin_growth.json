@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C#C",
+    "S S"
+  ],
+  "key": {
+    "C": {
+      "item": "machination:cobalt_ingot"
+    },
+    "#": {
+      "item": "machination:cobalt_phial_warden"
+    },
+    "S": [
+      {
+        "tag": "machination:sculk_blocks"
+      }
+    ]
+  },
+  "result": {
+    "item": "machination:shadowkin_growth"
+  }
+}

@@ -11,7 +11,6 @@
     "EnderDragonPartMixin",
     "ItemMixin",
     "ItemStackMixin",
-    "ListenerMixin",
     "LivingEntityMixin",
     "PiglinAiMixin",
     "PlayerMixin",

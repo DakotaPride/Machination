@@ -12,6 +12,7 @@ public class AdvancementRegistrar {
     public static final FinalStandTrigger FINAL_STAND = new FinalStandTrigger();
     public static final DesolaticFlaskTrigger DESOLATIC_FLASK = new DesolaticFlaskTrigger();
     public static final InfectTrigger INFECT = new InfectTrigger();
+    public static final SkewerTrigger SKEWER = new SkewerTrigger();
 
     public static void worshipOurToxicYuriAIOverlords() {
         CriteriaTriggers.register(USE_COBALT_PHIAL);
@@ -22,5 +23,6 @@ public class AdvancementRegistrar {
         CriteriaTriggers.register(FINAL_STAND);
         CriteriaTriggers.register(DESOLATIC_FLASK);
         CriteriaTriggers.register(INFECT);
+        CriteriaTriggers.register(SKEWER);
     }
 }

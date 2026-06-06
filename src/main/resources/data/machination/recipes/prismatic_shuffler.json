@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "P#P"
+  ],
+  "key": {
+    "C": {
+      "item": "machination:cobalt_ingot"
+    },
+    "#": {
+      "item": "machination:cobalt_phial_guardian"
+    },
+    "P": {
+      "item": "minecraft:prismarine"
+    }
+  },
+  "result": {
+    "item": "machination:prismatic_shuffler"
+  }
+}

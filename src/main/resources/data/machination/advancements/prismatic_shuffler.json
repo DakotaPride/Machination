@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "item": "machination:prismatic_shuffler"
+    },
+    "title": {
+      "translate": "advancement.machination.prismatic_shuffler.title"
+    },
+    "description": {
+      "translate": "advancement.machination.prismatic_shuffler.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "machination:sample_divine_being",
+  "criteria": {
+    "prismatic_shuffler": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "machination:prismatic_shuffler"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "prismatic_shuffler"
+    ]
+  ]
+}

@@ -21,6 +21,10 @@
   "advancement.machination.shadowkin_gear.description": "Twist the unholy, veiny infestation around your body",
   "advancement.machination.shadowkin_gear_infect.title": "Pandemic",
   "advancement.machination.shadowkin_gear_infect.description": "§9[Remarkable]§a Inflict at least 10 other creatures with your infected ailment",
+  "advancement.machination.prismatic_shuffler.title": "Here Be Storms",
+  "advancement.machination.prismatic_shuffler.description": "Make a curious construction out of the wonders that lie just beneath the surface",
+  "advancement.machination.prismatic_shuffler_skewer.title": "'Dey took me legs!",
+  "advancement.machination.prismatic_shuffler_skewer.description": "§9[Remarkable]§a Defeat 3 Elder Guardians while having an unfair advantage",
 
   "itemGroup.machination.tab": "Machination",
   "item.machination.raw_cobalt": "Raw Cobalt",
@@ -101,10 +105,11 @@
   "text.machination.prismatic_shuffler.mining_fatigue_rid_of.2": "taking hold over the user",
   "text.machination.prismatic_shuffler.sharptooth": "Deals §a3 extra points §rof damage to foes",
   "text.machination.prismatic_shuffler.expire.damage_boost": " +40% from §aExpire",
+  "text.machination.prismatic_shuffler.subnautic.damage_boost": " +60% from §aSubnautic for most water creatures",
   "enchantment.machination.sharptooth": "Sharptooth",
   "enchantment.machination.sharptooth.desc": "Turns the Prismatic Shuffler into a weapon rather than a utility item",
   "enchantment.machination.expire": "Expire",
   "enchantment.machination.expire.desc": "Makes the user able to suffocate above water, but allows them to freely breath underwater",
-  "enchantment.machination.subnautic": "Subnautic",
-  "enchantment.machination.subnautic.desc": "Clears fog while underwater"
+  "enchantment.machination.refreshing": "Refreshing",
+  "enchantment.machination.refreshing.desc": "Grants Regeneration II while fully submerged underwater while in-hand"
 }

@@ -88,11 +88,13 @@ public class WitheringBashItem extends ProjectileWeaponItem {
         if (user instanceof Player player) {
             ItemStack projectile = player.getProjectile(stack);
             int cooldown = hasMomentumEnchantment(player) ? 20 : 40;
-            MachinationUtils.createCooldown(player, cooldown);
-            if (!player.getAbilities().instabuild) {
-                if (hasSuitEnchantment(player))
-                    projectile.shrink(3);
-                else projectile.shrink(1);
+            if (!level.isClientSide) {
+                MachinationUtils.createCooldown(player, cooldown);
+                if (!player.getAbilities().instabuild) {
+                    if (hasSuitEnchantment(player))
+                        projectile.shrink(3);
+                    else projectile.shrink(1);
+                }
             }
 
             this.performRangedAttack(player);

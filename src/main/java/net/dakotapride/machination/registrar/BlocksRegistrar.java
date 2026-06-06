@@ -20,6 +20,7 @@ public class BlocksRegistrar {
 
     public static RegistryObject<Block> COBALT_ORE = registerBlock("cobalt_ore", () -> new CobaltOreBlock(BlockBehaviour.Properties.copy(Blocks.COPPER_ORE).mapColor(MapColor.COLOR_LIGHT_BLUE).requiresCorrectToolForDrops()));
     public static RegistryObject<Block> DEEPSLATE_COBALT_ORE = registerBlock("deepslate_cobalt_ore", () -> new CobaltOreBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_COPPER_ORE).mapColor(MapColor.COLOR_LIGHT_BLUE).requiresCorrectToolForDrops()));
+    public static RegistryObject<Block> NETHERRACK_COBALT_ORE = registerBlock("netherrack_cobalt_ore", () -> new CobaltOreBlock(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).mapColor(MapColor.COLOR_LIGHT_BLUE).requiresCorrectToolForDrops()));
     public static RegistryObject<Block> COBALT_BLOCK = registerBlock("cobalt_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK).mapColor(MapColor.COLOR_LIGHT_BLUE)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

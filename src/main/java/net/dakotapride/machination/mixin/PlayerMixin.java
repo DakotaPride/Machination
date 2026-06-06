@@ -1,26 +1,16 @@
 package net.dakotapride.machination.mixin;
 
-import net.dakotapride.machination.registrar.EnchantmentRegistrar;
-import net.dakotapride.machination.util.MachinationArmourMaterials;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterials;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
 public abstract class PlayerMixin extends LivingEntity {
@@ -32,28 +22,50 @@ public abstract class PlayerMixin extends LivingEntity {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void tick(CallbackInfo ci) {
-        for (ItemStack stack : player.getArmorSlots()) {
-            if (stack.getItem() instanceof ArmorItem) {
-                ItemStack headSlot = player.getItemBySlot(EquipmentSlot.HEAD);
-                ItemStack chestSlot = player.getItemBySlot(EquipmentSlot.CHEST);
-                ItemStack legsSlot = player.getItemBySlot(EquipmentSlot.LEGS);
-                ItemStack feetSlot = player.getItemBySlot(EquipmentSlot.FEET);
-                if (headSlot.getItem() instanceof ArmorItem headItem
-                        && chestSlot .getItem() instanceof ArmorItem chestItem
-                        && legsSlot .getItem() instanceof ArmorItem legsItem
-                        && feetSlot .getItem() instanceof ArmorItem feetItem) {
-                    boolean isHeadGold = headItem.getMaterial() == ArmorMaterials.GOLD;
-                    boolean isChestEnforced = chestItem.getMaterial() == MachinationArmourMaterials.ENFORCED;
-                    boolean isLegsGold = legsItem.getMaterial() == ArmorMaterials.GOLD;
-                    boolean isFeetGold = feetItem.getMaterial() == ArmorMaterials.GOLD;
+        CompoundTag tag = player.getPersistentData();
+        if (player.getTags().contains("UnderPrismaticEffects")) {
+            if (player.hasEffect(MobEffects.DIG_SLOWDOWN))
+                player.removeEffect(MobEffects.DIG_SLOWDOWN);
+            int immuneToFatigueTicks = tag.getInt("ImmuneToFatigueTicks");
+            if (immuneToFatigueTicks >= 200) {
+                player.removeTag("UnderPrismaticEffects");
+                tag.putInt("ImmuneToFatigueTicks", 0);
+            } else {
+                immuneToFatigueTicks++;
+                tag.putInt("ImmuneToFatigueTicks", immuneToFatigueTicks);
+            }
+        }
 
-                    if (isChestEnforced && stack.getEnchantmentLevel(EnchantmentRegistrar.GILDED_SKIN.get()) > 0)
-                        if (isHeadGold && isLegsGold && isFeetGold) {
-                            MobEffectInstance effectInstance = new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 20*60, 2);
-                            if (effectInstance.endsWithin(20*3) || !player.hasEffect(MobEffects.DAMAGE_RESISTANCE))
-                                player.addEffect(effectInstance);
-                        }
-                }
+        if (player.getTags().contains("ExpiredFromPrismaticShuffler")) {
+            int expiredTicks = tag.getInt("ExpiredTicks");
+            if (expiredTicks >= 400) {
+                player.removeTag("ExpiredFromPrismaticShuffler");
+                tag.putInt("ExpiredTicks", 0);
+            } else {
+                expiredTicks++;
+                tag.putInt("ExpiredTicks", expiredTicks);
+            }
+        }
+
+        if (player.getTags().contains("SubnauticFromPrismaticShuffler")) {
+            int subnauticTicks = tag.getInt("SubnauticTicks");
+            if (subnauticTicks >= 200) {
+                player.removeTag("SubnauticFromPrismaticShuffler");
+                tag.putInt("SubnauticTicks", 0);
+            } else {
+                subnauticTicks++;
+                tag.putInt("SubnauticTicks", subnauticTicks);
+            }
+        }
+
+        if (player.getTags().contains("HasSteppedOnSculkRecently")) {
+            int shadowkinBenefitsRemovalTicks = tag.getInt("ShadowkinBenefitsRemovalTicks");
+            if (shadowkinBenefitsRemovalTicks >= 60) {
+                player.removeTag("HasSteppedOnSculkRecently");
+                tag.putInt("ShadowkinBenefitsRemovalTicks", 0);
+            } else {
+                shadowkinBenefitsRemovalTicks++;
+                tag.putInt("ShadowkinBenefitsRemovalTicks", shadowkinBenefitsRemovalTicks);
             }
         }
     }

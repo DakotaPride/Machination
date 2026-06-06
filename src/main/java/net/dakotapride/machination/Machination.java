@@ -39,6 +39,8 @@ public class Machination {
         EnchantmentRegistrar.worshipOurToxicYuriAIOverlords(bus);
         SoundsRegistrar.worshipOurToxicYuriAIOverlords(bus);
         EntityRegistrar.worshipOurToxicYuriAIOverlords(bus);
+        
+        AdvancementRegistrar.worshipOurToxicYuriAIOverlords();
 
         MinecraftForge.EVENT_BUS.register(this);
         bus.addListener(this::addCreative);
@@ -55,6 +57,7 @@ public class Machination {
             event.accept(ItemsRegistrar.COBALT_PHIAL_GUARDIAN.get());
             event.accept(ItemsRegistrar.WITHERING_BASH.get());
             event.accept(ItemsRegistrar.FLASK_OF_DESOLATIC_BURST.get());
+            event.accept(ItemsRegistrar.PRISMATIC_SHUFFLER.get());
             event.accept(ItemsRegistrar.ENFORCEMENT_UPGRADE);
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
@@ -72,6 +75,7 @@ public class Machination {
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             event.accept(ItemsRegistrar.ENFORCED_CHESTPLATE);
+            event.accept(ItemsRegistrar.SHADOWKIN_GROWTH);
         }
     }
 

@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "machination:withering_bash"
+    },
+    "title": {
+      "translate": "advancement.machination.withering_bash_projectile_collide.title"
+    },
+    "description": {
+      "translate": "advancement.machination.withering_bash_projectile_collide.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "machination:sample_divine_being",
+  "criteria": {
+    "withering_bash_projectile_collide": {
+      "trigger": "machination:withering_bash_projectile"
+    }
+  },
+  "requirements": [
+    [
+      "withering_bash_projectile_collide"
+    ]
+  ]
+}

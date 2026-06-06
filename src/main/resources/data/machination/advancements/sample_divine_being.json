@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "machination:cobalt_phial_ender_dragon"
+    },
+    "title": {
+      "translate": "advancement.machination.sample_divine_being.title"
+    },
+    "description": {
+      "translate": "advancement.machination.sample_divine_being.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "machination:cobalt_phial",
+  "criteria": {
+    "sample_divine_being": {
+      "trigger": "machination:sample_divine_being"
+    }
+  },
+  "requirements": [
+    [
+      "sample_divine_being"
+    ]
+  ]
+}

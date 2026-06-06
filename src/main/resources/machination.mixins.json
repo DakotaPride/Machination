@@ -11,11 +11,14 @@
     "EnderDragonPartMixin",
     "ItemMixin",
     "ItemStackMixin",
+    "ListenerMixin",
     "LivingEntityMixin",
     "PiglinAiMixin",
-    "PlayerMixin"
+    "PlayerMixin",
+    "WardenMixin"
   ],
   "client": [
+    "ItemInHandRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

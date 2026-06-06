@@ -32,8 +32,10 @@ public class CreativeModeTabsRegistrar {
                         output.accept(ItemsRegistrar.SOUL_BOTTLE.get());
                         output.accept(ItemsRegistrar.WITHERING_BASH.get());
                         output.accept(ItemsRegistrar.FLASK_OF_DESOLATIC_BURST.get());
+                        output.accept(ItemsRegistrar.SHADOWKIN_GROWTH.get());
                         output.accept(ItemsRegistrar.ENFORCEMENT_UPGRADE.get());
                         output.accept(ItemsRegistrar.ENFORCED_CHESTPLATE.get());
+                        output.accept(ItemsRegistrar.PRISMATIC_SHUFFLER.get());
                     }).build());
 
     public static void worshipOurToxicYuriAIOverlords(IEventBus bus) {

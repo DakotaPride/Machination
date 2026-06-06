@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "item": "machination:cobalt_ingot"
+    },
+    "title": {
+      "translate": "advancement.machination.title"
+    },
+    "description": {
+      "translate": "advancement.machination.description"
+    },
+    "background": "machination:textures/block/cobalt_block.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "cobalt": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "machination:raw_cobalt",
+              "machination:cobalt_ore",
+              "machination:deepslate_cobalt_ore",
+              "machination:cobalt_ingot"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "cobalt"
+    ]
+  ]
+}

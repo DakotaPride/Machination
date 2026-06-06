@@ -4,11 +4,10 @@ import net.dakotapride.machination.Machination;
 import net.dakotapride.machination.enchantment.enforced_gear.*;
 import net.dakotapride.machination.enchantment.flask.*;
 import net.dakotapride.machination.enchantment.phial.*;
+import net.dakotapride.machination.enchantment.shadowkin_gear.*;
+import net.dakotapride.machination.enchantment.shuffler.*;
 import net.dakotapride.machination.enchantment.withering_bash.*;
-import net.dakotapride.machination.item.CobaltPhialItem;
-import net.dakotapride.machination.item.EnforcedGearItem;
-import net.dakotapride.machination.item.FlaskOfDesolaticBurstItem;
-import net.dakotapride.machination.item.WitheringBashItem;
+import net.dakotapride.machination.item.*;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -22,6 +21,8 @@ public class EnchantmentRegistrar {
     public static final EnchantmentCategory EXPLOSIVE_PROJECTILE = EnchantmentCategory.create("explosive_projectile", item -> item instanceof WitheringBashItem);
     public static final EnchantmentCategory FLASK = EnchantmentCategory.create("flask", item -> item instanceof FlaskOfDesolaticBurstItem);
     public static final EnchantmentCategory ENFORCED_GEAR = EnchantmentCategory.create("enforced_gear", item -> item instanceof EnforcedGearItem);
+    public static final EnchantmentCategory SHADOWKIN_GEAR = EnchantmentCategory.create("shadowkin_gear", item -> item instanceof ShadowkinGearItem);
+    public static final EnchantmentCategory SHUFFLER = EnchantmentCategory.create("shuffler", item -> item instanceof PrismaticShufflerItem);
 
     static DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, Machination.MOD_ID);
 
@@ -30,6 +31,8 @@ public class EnchantmentRegistrar {
             () -> new SiphonEnchantment(PHIAL, EquipmentSlot.MAINHAND));
     public static final RegistryObject<Enchantment> BONK = ENCHANTMENTS.register("bonk",
             () -> new BonkEnchantment(PHIAL, EquipmentSlot.MAINHAND));
+    public static final RegistryObject<Enchantment> PUPPY = ENCHANTMENTS.register("puppy",
+            () -> new PuppyEnchantment(PHIAL, EquipmentSlot.MAINHAND));
     // Withering Bash
     public static final RegistryObject<Enchantment> VIRAL = ENCHANTMENTS.register("viral",
             () -> new ViralEnchantment(EXPLOSIVE_PROJECTILE, EquipmentSlot.MAINHAND));
@@ -37,7 +40,7 @@ public class EnchantmentRegistrar {
             () -> new MomentumEnchantment(EXPLOSIVE_PROJECTILE, EquipmentSlot.MAINHAND));
     public static final RegistryObject<Enchantment> SUIT = ENCHANTMENTS.register("suit",
             () -> new SuitEnchantment(EXPLOSIVE_PROJECTILE, EquipmentSlot.MAINHAND));
-    // Withering Bash
+    // Flask of Desolatic Burst
     public static final RegistryObject<Enchantment> ENLARGE = ENCHANTMENTS.register("enlarge",
             () -> new EnlargeEnchantment(FLASK, EquipmentSlot.MAINHAND));
     public static final RegistryObject<Enchantment> FINAL_STAND = ENCHANTMENTS.register("final_stand",
@@ -53,6 +56,20 @@ public class EnchantmentRegistrar {
             () -> new BruteEnchantment(ENFORCED_GEAR, EquipmentSlot.CHEST));
     public static final RegistryObject<Enchantment> BULWART = ENCHANTMENTS.register("bulwart",
             () -> new BulwartEnchantment(ENFORCED_GEAR, EquipmentSlot.CHEST));
+    // Shadowkin Gear
+    public static final RegistryObject<Enchantment> HIVEMIND = ENCHANTMENTS.register("hivemind", // Planned to be moved to just head if a headpiece is added
+            () -> new HivemindEnchantment(SHADOWKIN_GEAR, EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET));
+    public static final RegistryObject<Enchantment> INFEST = ENCHANTMENTS.register("infest",
+            () -> new InfestEnchantment(SHADOWKIN_GEAR, EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET));
+    public static final RegistryObject<Enchantment> CATATONIC = ENCHANTMENTS.register("catatonic",
+            () -> new CatatonicEnchantment(SHADOWKIN_GEAR, EquipmentSlot.FEET));
+    // Prismatic Shuffler
+    public static final RegistryObject<Enchantment> SHARPTOOTH = ENCHANTMENTS.register("sharptooth",
+            () -> new SharptoothEnchantment(SHUFFLER, EquipmentSlot.MAINHAND));
+    public static final RegistryObject<Enchantment> EXPIRE = ENCHANTMENTS.register("expire",
+            () -> new ExpireEnchantment(SHUFFLER, EquipmentSlot.MAINHAND));
+    public static final RegistryObject<Enchantment> SUBNAUTIC = ENCHANTMENTS.register("subnautic",
+            () -> new SubnauticEnchantment(SHUFFLER, EquipmentSlot.MAINHAND));
 
     public static void worshipOurToxicYuriAIOverlords(IEventBus bus) {
         ENCHANTMENTS.register(bus);

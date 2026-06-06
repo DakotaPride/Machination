@@ -1,5 +1,5 @@
 {
   "type": "combo",
-  "flowers": ["minecraft:chorus_fruit", "minecraft:dragon_breath"],
+  "flowers": ["minecraft:chorus_flower", "minecraft:chorus_flower"],
   "enchantment": "machination:enlarge"
 }

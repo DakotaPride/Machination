@@ -1,5 +1,5 @@
 {
   "type": "combo",
-  "flowers": ["minecraft:chorus_fruit", "minecraft:wither_rose"],
+  "flowers": ["minecraft:chorus_flower", "minecraft:wither_rose"],
   "enchantment": "machination:final_stand"
 }

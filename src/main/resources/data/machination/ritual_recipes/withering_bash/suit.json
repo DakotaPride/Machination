@@ -1,5 +1,5 @@
 {
   "type": "combo",
-  "flowers": ["minecraft:wither_rose", "minecraft:wither_rose"],
+  "flowers": ["minecraft:wither_rose", "minecraft:wither_skull"],
   "enchantment": "machination:suit"
 }

@@ -13,6 +13,7 @@ public class SoundsRegistrar {
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Machination.MOD_ID);
 
     public static final RegistryObject<SoundEvent> PHIAL_USE = registerSound("use_phial_on_living_creature");
+    public static final RegistryObject<SoundEvent> PHIAL_USE_SIPHON = registerSound("use_phial_on_living_creature_siphon");
     public static final RegistryObject<SoundEvent> PHIAL_USE_DIVINE_BEING = registerSound("use_phial_on_divine_being");
 
     private static RegistryObject<SoundEvent> registerSound(String name) {

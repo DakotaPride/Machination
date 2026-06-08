@@ -73,8 +73,14 @@ public class CobaltPhialItem extends Item {
         else livingEntity.hurt(livingEntity.damageSources().generic(), damage);
 
         if (hasBonkEnchantment(player) && !(stack.getItem() instanceof FilledCobaltPhialItem)) {
-            livingEntity.knockback(2.5D, Mth.sin(livingEntity.getYRot() * ((float)Math.PI / 180F)), (-Mth.cos(livingEntity.getYRot() * ((float)Math.PI / 180F))));
-            livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().multiply(0.6D, 1.0D, 0.6D));
+            double d0 = player.getX() - livingEntity.getX();
+
+            double d1;
+            for(d1 = player.getZ() - livingEntity.getZ(); d0 * d0 + d1 * d1 < 1.0E-4D; d1 = (Math.random() - Math.random()) * 0.01D) {
+                d0 = (Math.random() - Math.random()) * 0.01D;
+            }
+
+            livingEntity.knockback(0.8F, d0, d1);
         } else livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 100));
 
         if (hasPuppyEnchantment(player) && livingEntity instanceof ServerPlayer playerTarget && !(stack.getItem() instanceof FilledCobaltPhialItem))
@@ -113,9 +119,9 @@ public class CobaltPhialItem extends Item {
         if (!player.getCooldowns().isOnCooldown(stack.getItem()) && this.isEmptyPhial()) {
             CobaltPhialItem.applyInjectionEffects(player, stack, target);
             if (!level.isClientSide) {
+                if (!player.getAbilities().instabuild)
+                    MachinationUtils.createCooldown(player, 300);
                 if (target.getType() == entityType && !stack.isEnchanted()) {
-                    if (!player.getAbilities().instabuild)
-                        MachinationUtils.createCooldown(player, 300);
                     player.setItemInHand(hand, new ItemStack(phialItem));
                 }
             }
@@ -145,7 +151,9 @@ public class CobaltPhialItem extends Item {
         boolean flag = target.getType().is(EntityTypeTags.BLACKLISTED_PHIAL_ENTITIES);
         boolean flag2 = target.getType().is(EntityTypeTags.DIVINE_BEINGS);
         if (!flag && this.isEmptyPhial()) {
-            level.playSound(player, player.blockPosition(), SoundsRegistrar.PHIAL_USE.get(), SoundSource.PLAYERS, 2.0F, 1.0F);
+            if (hasSiphonEnchantment(player))
+                level.playSound(player, player.blockPosition(), SoundsRegistrar.PHIAL_USE_SIPHON.get(), SoundSource.PLAYERS, 2.0F, 1.0F);
+            else level.playSound(player, player.blockPosition(), SoundsRegistrar.PHIAL_USE.get(), SoundSource.PLAYERS, 2.0F, 1.0F);
             if (flag2) {
                 level.playSound(player, player.blockPosition(), SoundsRegistrar.PHIAL_USE_DIVINE_BEING.get(), SoundSource.PLAYERS, 2.0F, 1.0F);
             }

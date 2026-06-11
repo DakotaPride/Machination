@@ -1,0 +1,24 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ascendant_arcana"
+    }
+  ],
+  "type": "ascendant_arcana:enchantment_recipe",
+  "enchantment": "machination:bonk",
+  "level_cost": 7,
+  "magical_scrap_cost": 3,
+  "primary_ingredient": {
+    "count": 2,
+    "ingredient": {
+      "item": "minecraft:rose_bush"
+    }
+  },
+  "secondary_ingredient": {
+    "count": 1,
+    "ingredient": {
+      "item": "minecraft:iron_sword"
+    }
+  }
+}

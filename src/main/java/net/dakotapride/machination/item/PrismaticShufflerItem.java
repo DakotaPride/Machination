@@ -23,6 +23,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
@@ -54,6 +55,16 @@ public class PrismaticShufflerItem extends Item {
 
     public static boolean hasRefreshingEnchantment(Player player) {
         return EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistrar.REFRESHING.get(), player) > 0;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getEnchantmentValue() {
+        return 10;
     }
 
     @Override
@@ -118,7 +129,7 @@ public class PrismaticShufflerItem extends Item {
             if (itemStack.getEnchantmentLevel(EnchantmentRegistrar.EXPIRE.get()) > 0)
                 components.add(Component.translatable("text.machination.prismatic_shuffler.expire.damage_boost").withStyle(ChatFormatting.DARK_GREEN));
             if (itemStack.getEnchantmentLevel(EnchantmentRegistrar.REFRESHING.get()) > 0)
-                components.add(Component.translatable("text.machination.prismatic_shuffler.subnautic.damage_boost").withStyle(ChatFormatting.DARK_GREEN));
+                components.add(Component.translatable("text.machination.prismatic_shuffler.refreshing.damage_boost").withStyle(ChatFormatting.DARK_GREEN));
             components.add(Component.literal(""));
         }
     }

@@ -2,6 +2,7 @@ package net.dakotapride.machination.mixin;
 
 import net.dakotapride.machination.item.CobaltPhialItem;
 import net.dakotapride.machination.item.DivineBeings;
+import net.dakotapride.machination.item.FilledCobaltPhialItem;
 import net.dakotapride.machination.item.WitheringBashItem;
 import net.dakotapride.machination.registrar.AdvancementRegistrar;
 import net.dakotapride.machination.registrar.EnchantmentRegistrar;
@@ -118,6 +119,20 @@ public abstract class LivingEntityMixin extends Entity {
             InteractionHand hand = player.getUsedItemHand();
             ItemStack stack = player.getItemInHand(hand);
             if (stack.getItem() instanceof CobaltPhialItem phialItem) {
+                if (CobaltPhialItem.hasBonkEnchantment(player) && phialItem.isEmptyPhial()) {
+                    double d0 = player.getX() - livingEntity.getX();
+
+                    double d1;
+                    for(d1 = player.getZ() - livingEntity.getZ(); d0 * d0 + d1 * d1 < 1.0E-4D; d1 = (Math.random() - Math.random()) * 0.01D) {
+                        d0 = (Math.random() - Math.random()) * 0.01D;
+                    }
+
+                    livingEntity.knockback(0.8F, d0, d1);
+                }
+
+                if (CobaltPhialItem.hasPuppyEnchantment(player) && livingEntity instanceof ServerPlayer playerTarget && phialItem.isEmptyPhial())
+                    playerTarget.addTag("StunlockedFromCuteness");
+
                 phialItem.createNewPhialInteraction(player, stack, livingEntity, hand, level,
                         ItemsRegistrar.COBALT_PHIAL_ENDER_DRAGON.get(), DivineBeings.ENDER_DRAGON.getEntityType());
                 phialItem.createNewPhialInteraction(player, stack, livingEntity, hand, level,

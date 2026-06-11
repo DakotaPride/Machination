@@ -28,6 +28,16 @@ public class EnforcedGearItem extends ArmorItem {
         super(MachinationArmourMaterials.ENFORCED, type, properties);
     }
 
+    @Override
+    public boolean isDamageable(ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
     public static boolean hasGildedSkinEnchantment(Player player) {
         return EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistrar.GILDED_SKIN.get(), player) > 0;
     }

@@ -105,7 +105,7 @@
   "text.machination.prismatic_shuffler.mining_fatigue_rid_of.2": "taking hold over the user",
   "text.machination.prismatic_shuffler.sharptooth": "Deals §a3 extra points §rof damage to foes",
   "text.machination.prismatic_shuffler.expire.damage_boost": " +40% from §aExpire",
-  "text.machination.prismatic_shuffler.subnautic.damage_boost": " +60% from §aSubnautic for most water creatures",
+  "text.machination.prismatic_shuffler.refreshing.damage_boost": " +60% from §aRefreshing for most aquatic creatures",
   "enchantment.machination.sharptooth": "Sharptooth",
   "enchantment.machination.sharptooth.desc": "Turns the Prismatic Shuffler into a weapon rather than a utility item",
   "enchantment.machination.expire": "Expire",

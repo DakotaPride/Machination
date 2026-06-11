@@ -38,6 +38,16 @@ public class ShadowkinGearItem extends ArmorItem {
         super(MachinationArmourMaterials.SHADOWKIN, type, properties);
     }
 
+    @Override
+    public boolean isDamageable(ItemStack stack) {
+        return false;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
     public static boolean hasHivemindEnchantment(Player player) {
         return EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistrar.HIVEMIND.get(), player) > 0;
     }

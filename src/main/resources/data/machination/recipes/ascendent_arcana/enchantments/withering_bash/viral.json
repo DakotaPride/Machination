@@ -1,0 +1,24 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ascendant_arcana"
+    }
+  ],
+  "type": "ascendant_arcana:enchantment_recipe",
+  "enchantment": "machination:viral",
+  "level_cost": 3,
+  "magical_scrap_cost": 3,
+  "primary_ingredient": {
+    "count": 4,
+    "ingredient": {
+      "item": "minecraft:coal"
+    }
+  },
+  "secondary_ingredient": {
+    "count": 3,
+    "ingredient": {
+      "item": "minecraft:tnt"
+    }
+  }
+}

@@ -60,6 +60,16 @@ public class CobaltPhialItem extends Item {
     }
 
     @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return this.isEmptyPhial();
+    }
+
+    @Override
+    public int getEnchantmentValue() {
+        return 15;
+    }
+
+    @Override
     public @NotNull String getDescriptionId(@NotNull ItemStack stack) {
         return ItemsRegistrar.COBALT_PHIAL.get().getDescriptionId();
     }
@@ -72,19 +82,7 @@ public class CobaltPhialItem extends Item {
             player.heal(damage);
         else livingEntity.hurt(livingEntity.damageSources().generic(), damage);
 
-        if (hasBonkEnchantment(player) && !(stack.getItem() instanceof FilledCobaltPhialItem)) {
-            double d0 = player.getX() - livingEntity.getX();
-
-            double d1;
-            for(d1 = player.getZ() - livingEntity.getZ(); d0 * d0 + d1 * d1 < 1.0E-4D; d1 = (Math.random() - Math.random()) * 0.01D) {
-                d0 = (Math.random() - Math.random()) * 0.01D;
-            }
-
-            livingEntity.knockback(0.8F, d0, d1);
-        } else livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 100));
-
-        if (hasPuppyEnchantment(player) && livingEntity instanceof ServerPlayer playerTarget && !(stack.getItem() instanceof FilledCobaltPhialItem))
-            playerTarget.addTag("StunlockedFromCuteness");
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 100));
 
         if (player instanceof ServerPlayer serverPlayer && !(stack.getItem() instanceof FilledCobaltPhialItem)) {
             AdvancementRegistrar.USE_COBALT_PHIAL.trigger(serverPlayer);
@@ -119,11 +117,10 @@ public class CobaltPhialItem extends Item {
         if (!player.getCooldowns().isOnCooldown(stack.getItem()) && this.isEmptyPhial()) {
             CobaltPhialItem.applyInjectionEffects(player, stack, target);
             if (!level.isClientSide) {
+                if (target.getType() == entityType && !stack.isEnchanted())
+                    player.setItemInHand(hand, new ItemStack(phialItem));
                 if (!player.getAbilities().instabuild)
                     MachinationUtils.createCooldown(player, 300);
-                if (target.getType() == entityType && !stack.isEnchanted()) {
-                    player.setItemInHand(hand, new ItemStack(phialItem));
-                }
             }
             return InteractionResult.SUCCESS;
         }

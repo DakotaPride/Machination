@@ -18,6 +18,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.player.AdvancementEvent;
@@ -45,6 +46,16 @@ public class FlaskOfDesolaticBurstItem extends Item {
 
     public static boolean hasArsonistEnchantment(Player player) {
         return EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistrar.ARSONIST.get(), player) > 0;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getEnchantmentValue() {
+        return 20;
     }
 
     @Override
@@ -97,6 +108,7 @@ public class FlaskOfDesolaticBurstItem extends Item {
                 BetterAOECloud cloud = new BetterAOECloud(level, player.getX(), player.getY(), player.getZ());
                 if (!level.isClientSide) {
                     createAreaEffectCloud(cloud, player);
+                    player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 2));
                     MachinationUtils.createCooldownAndDecrement(player, stack, 60, 1);
                     if (player instanceof ServerPlayer serverPlayer) {
                         AdvancementRegistrar.FINAL_STAND.trigger(serverPlayer);

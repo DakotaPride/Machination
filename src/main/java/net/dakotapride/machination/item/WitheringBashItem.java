@@ -15,6 +15,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.WitherSkull;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -45,6 +46,16 @@ public class WitheringBashItem extends ProjectileWeaponItem {
 
     public static boolean hasSuitEnchantment(Player player) {
         return EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistrar.SUIT.get(), player) > 0;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+
+    @Override
+    public int getEnchantmentValue() {
+        return 17;
     }
 
     @Override

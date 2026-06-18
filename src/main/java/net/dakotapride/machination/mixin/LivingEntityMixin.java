@@ -2,7 +2,6 @@ package net.dakotapride.machination.mixin;
 
 import net.dakotapride.machination.item.CobaltPhialItem;
 import net.dakotapride.machination.item.DivineBeings;
-import net.dakotapride.machination.item.FilledCobaltPhialItem;
 import net.dakotapride.machination.item.WitheringBashItem;
 import net.dakotapride.machination.registrar.AdvancementRegistrar;
 import net.dakotapride.machination.registrar.EnchantmentRegistrar;
@@ -11,6 +10,7 @@ import net.dakotapride.machination.registrar.SoundsRegistrar;
 import net.dakotapride.machination.util.EntityTypeTags;
 import net.dakotapride.machination.util.MachinationArmourMaterials;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
@@ -22,7 +22,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.WitherSkull;
 import net.minecraft.world.item.ArmorItem;
@@ -130,8 +129,10 @@ public abstract class LivingEntityMixin extends Entity {
                     livingEntity.knockback(0.8F, d0, d1);
                 }
 
-                if (CobaltPhialItem.hasPuppyEnchantment(player) && livingEntity instanceof ServerPlayer playerTarget && phialItem.isEmptyPhial())
+                if (CobaltPhialItem.hasPuppyEnchantment(player) && livingEntity instanceof ServerPlayer playerTarget && phialItem.isEmptyPhial()) {
                     playerTarget.addTag("StunlockedFromCuteness");
+                    playerTarget.sendSystemMessage(Component.translatable("text.machination.puppified"), true);
+                }
 
                 phialItem.createNewPhialInteraction(player, stack, livingEntity, hand, level,
                         ItemsRegistrar.COBALT_PHIAL_ENDER_DRAGON.get(), DivineBeings.ENDER_DRAGON.getEntityType());

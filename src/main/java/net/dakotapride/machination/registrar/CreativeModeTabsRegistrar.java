@@ -19,6 +19,7 @@ public class CreativeModeTabsRegistrar {
                         output.accept(ItemsRegistrar.RAW_COBALT.get());
                         output.accept(ItemsRegistrar.COBALT_INGOT.get());
                         output.accept(ItemsRegistrar.COBALT_NUGGET.get());
+                        output.accept(ItemsRegistrar.COBALT_LEGGINGS.get());
                         output.accept(ItemsRegistrar.COBALT_PHIAL.get());
                         output.accept(ItemsRegistrar.COBALT_PHIAL_ENDER_DRAGON.get());
                         output.accept(ItemsRegistrar.COBALT_PHIAL_WITHER.get());

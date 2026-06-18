@@ -1,6 +1,7 @@
 package net.dakotapride.machination.util;
 
 import net.dakotapride.machination.Machination;
+import net.dakotapride.machination.registrar.ItemsRegistrar;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -26,7 +27,15 @@ public enum MachinationArmourMaterials implements StringRepresentable, ArmorMate
         typeProtection.put(ArmorItem.Type.LEGGINGS, 2);
         typeProtection.put(ArmorItem.Type.CHESTPLATE, 4);
         typeProtection.put(ArmorItem.Type.HELMET, 1);
-    }), 18, SoundEvents.SCULK_BLOCK_SPREAD, 0.0F, 0.0F, () -> Ingredient.of(Items.SCULK)),;
+    }), 18, SoundEvents.SCULK_BLOCK_SPREAD, 0.0F, 0.0F, () -> Ingredient.of(Items.SCULK)),
+    COBALT("cobalt", 33, Util.make(new EnumMap<>(ArmorItem.Type.class), (typeProtection) -> {
+        typeProtection.put(ArmorItem.Type.BOOTS, 2);
+        typeProtection.put(ArmorItem.Type.LEGGINGS, 5);
+        typeProtection.put(ArmorItem.Type.CHESTPLATE, 6);
+        typeProtection.put(ArmorItem.Type.HELMET, 2);
+    }), 18, SoundEvents.ARMOR_EQUIP_DIAMOND, 0.0F, 0.0F, () -> Ingredient.of(ItemsRegistrar.COBALT_INGOT.get())),
+
+    ;
 
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (typeProtection) -> {
         typeProtection.put(ArmorItem.Type.BOOTS, 13);

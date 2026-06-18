@@ -9,11 +9,14 @@
     "DiggerItemMixin",
     "EnderDragonMixin",
     "EnderDragonPartMixin",
+    "ItemEntityMixin",
     "ItemMixin",
     "ItemStackMixin",
     "LivingEntityMixin",
     "PiglinAiMixin",
     "PlayerMixin",
+    "SculkSensorBlockMixin",
+    "SculkShriekerBlockMixin",
     "WardenMixin"
   ],
   "client": [

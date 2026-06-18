@@ -47,14 +47,14 @@ public abstract class PlayerMixin extends LivingEntity {
             }
         }
 
-        if (player.getTags().contains("HasSteppedOnSculkRecently")) {
-            int shadowkinBenefitsRemovalTicks = tag.getInt("ShadowkinBenefitsRemovalTicks");
-            if (shadowkinBenefitsRemovalTicks >= 60) {
-                player.removeTag("HasSteppedOnSculkRecently");
-                tag.putInt("ShadowkinBenefitsRemovalTicks", 0);
+        if (player.getTags().contains("HasActivatedVibrationRecently")) {
+            int removeRecentVibrationDataTicks = tag.getInt("RemoveRecentVibrationDataTicks");
+            if (removeRecentVibrationDataTicks >= 60) {
+                player.removeTag("HasActivatedVibrationRecently");
+                tag.putInt("RemoveRecentVibrationDataTicks", 0);
             } else {
-                shadowkinBenefitsRemovalTicks++;
-                tag.putInt("ShadowkinBenefitsRemovalTicks", shadowkinBenefitsRemovalTicks);
+                removeRecentVibrationDataTicks++;
+                tag.putInt("RemoveRecentVibrationDataTicks", removeRecentVibrationDataTicks);
             }
         }
     }

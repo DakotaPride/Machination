@@ -5,8 +5,12 @@ import net.dakotapride.machination.registrar.AdvancementRegistrar;
 import net.dakotapride.machination.registrar.EnchantmentRegistrar;
 import net.dakotapride.machination.util.MachinationArmourMaterials;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.controls.KeyBindsList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.KeybindContents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -22,6 +26,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Locale;
 
 public class EnforcedGearItem extends ArmorItem {
     public EnforcedGearItem(Type type, Properties properties) {
@@ -82,6 +87,8 @@ public class EnforcedGearItem extends ArmorItem {
                 if (player.isCrouching()) {
                     if (requiredBulwartCrouchingTicks > 0) {
                         --requiredBulwartCrouchingTicks;
+                        if (player instanceof ServerPlayer serverPlayer)
+                            serverPlayer.sendSystemMessage(Component.translatable("text.machination.bulwart_cooldown", Minecraft.getInstance().options.keyShift.getKey().getDisplayName(), ((requiredBulwartCrouchingTicks / 20) / 2)).withStyle(ChatFormatting.GRAY), true);
                     }
                     if (requiredBulwartCrouchingTicks == 0) {
                         requiredBulwartCrouchingTicks = (20*10)*2;
@@ -91,9 +98,8 @@ public class EnforcedGearItem extends ArmorItem {
                         if (player instanceof ServerPlayer serverPlayer)
                             AdvancementRegistrar.BULWART.trigger(serverPlayer);
                     }
-                } else if (requiredBulwartCrouchingTicks < (20*10)*2) {
+                } else if (requiredBulwartCrouchingTicks < (20*10)*2)
                     requiredBulwartCrouchingTicks = (20*10)*2;
-                }
             }
         }
     }

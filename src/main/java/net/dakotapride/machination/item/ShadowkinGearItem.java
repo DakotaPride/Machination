@@ -1,15 +1,15 @@
 package net.dakotapride.machination.item;
 
+import net.dakotapride.machination.Machination;
 import net.dakotapride.machination.registrar.AdvancementRegistrar;
 import net.dakotapride.machination.registrar.EnchantmentRegistrar;
 import net.dakotapride.machination.util.BlockTags;
 import net.dakotapride.machination.util.MachinationArmourMaterials;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.GameEventTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -24,7 +24,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraftforge.event.VanillaGameEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
@@ -60,23 +59,27 @@ public class ShadowkinGearItem extends ArmorItem {
         return EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistrar.CATATONIC.get(), player) > 0;
     }
 
+    public static boolean ableToStopVibrationDetection(Player player) {
+        return !hasCatatonicEnchantment(player) && player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof ShadowkinGearItem;
+    }
+    public static void createCatatonicEffects(Player player) {
+        MobEffectInstance slownessInstance = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20*15, 1);
+        MobEffectInstance strengthInstance = new MobEffectInstance(MobEffects.DAMAGE_BOOST, 20*15, 4);
+        if (hasCatatonicEnchantment(player) && player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof ShadowkinGearItem) {
+            if (slownessInstance.endsWithin(20*5) || !player.hasEffect(slownessInstance.getEffect()))
+                player.addEffect(slownessInstance);
+            if (strengthInstance.endsWithin(20*5) || !player.hasEffect(strengthInstance.getEffect()))
+                player.addEffect(strengthInstance);
+        }
+    }
+
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int i, boolean b) {
         if (entity instanceof Player player) {
-            if (hasCatatonicEnchantment(player)) {
-                BlockPos supposedPos = player.blockPosition().below();
-                if (level.getBlockState(supposedPos).is(BlockTags.SCULK_BLOCKS)) {
-                    player.addTag("HasSteppedOnSculkRecently");
-                }
-
-                if (player.getTags().contains("HasSteppedOnSculkRecently")) {
-                    player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 60, 1));
-                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60, 1));
-                } else {
-                    player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60, 2));
-                }
-            }
             if (this.getEquipmentSlot() == EquipmentSlot.FEET) {
+                if (!ableToStopVibrationDetection(player) && player.getTags().contains("HasActivatedVibrationRecently")) {
+                    createCatatonicEffects(player);
+                }
                 if (hasInfestEnchantment(player)) {
                     final List<LivingEntity> list = level.getEntitiesOfClass(LivingEntity.class,
                             player.getBoundingBox().inflate(8F), Objects::nonNull);
@@ -107,8 +110,16 @@ public class ShadowkinGearItem extends ArmorItem {
     public static void stealthWithShadowkinBoots(VanillaGameEvent event) {
         if (!event.isCanceled() && event.getCause() instanceof ServerPlayer player) {
             int frequency = VibrationSystem.getGameEventFrequency(event.getVanillaEvent());
-            if (event.isCancelable() && frequency >= 0)
-                event.setCanceled(player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof ShadowkinGearItem);
+            boolean correctFrequencies = frequency == 0 || frequency == 1 || frequency == 2 || frequency == 9 || frequency == 10 || frequency == 12 || frequency == 13;
+            if (event.isCancelable() && correctFrequencies) {
+                if (ShadowkinGearItem.ableToStopVibrationDetection(player))
+                    event.setCanceled(ShadowkinGearItem.ableToStopVibrationDetection(player));
+                else {
+                    if (hasCatatonicEnchantment(player)) {
+                        player.addTag("HasActivatedVibrationRecently");
+                    }
+                }
+            }
         }
     }
 }

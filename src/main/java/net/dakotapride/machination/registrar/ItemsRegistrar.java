@@ -32,6 +32,9 @@ public class ItemsRegistrar {
     public static RegistryObject<FilledCobaltPhialItem> COBALT_PHIAL_GUARDIAN = registerFilledCobaltPhialItem(DivineBeings.GUARDIAN);
     public static RegistryObject<Item> SOUL_BOTTLE = ITEMS.register("soul_bottle", () -> new Item(new Item.Properties()));
 
+    // Cobalt Armour
+    public static RegistryObject<CobaltGearItem> COBALT_LEGGINGS = ITEMS.register("cobalt_leggings", () -> new CobaltGearItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));
+
     // Ender Dragon
     public static RegistryObject<FlaskOfDesolaticBurstItem> FLASK_OF_DESOLATIC_BURST = ITEMS.register("flask_of_desolatic_burst", () -> new FlaskOfDesolaticBurstItem(new Item.Properties().stacksTo(16)));
 
@@ -42,6 +45,7 @@ public class ItemsRegistrar {
     public static RegistryObject<ShadowkinGearItem> SHADOWKIN_GROWTH = ITEMS.register("shadowkin_growth", () -> new ShadowkinGearItem(ArmorItem.Type.BOOTS, new Item.Properties()));
 
     // Elder Guardian
+    public static RegistryObject<Item> ENFORCED_SHUFFLER = ITEMS.register("enforced_shuffler", () -> new EnforcedShufflerItem(new Item.Properties().stacksTo(1)));
 
     // Piglin Brute
     private static final ChatFormatting TITLE_FORMAT = ChatFormatting.GRAY;

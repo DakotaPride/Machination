@@ -72,7 +72,7 @@ public class PrismaticShufflerItem extends Item {
         if (entity instanceof Player player && hasRefreshingEnchantment(player))
             if (player.isEyeInFluidType(ForgeMod.WATER_TYPE.get())) {
                 MobEffectInstance regeneration = new MobEffectInstance(MobEffects.REGENERATION, 100, 1);
-                if (!player.hasEffect(regeneration.getEffect()) || regeneration.endsWithin(3))
+                if (!player.hasEffect(regeneration.getEffect()) || regeneration.endsWithin(20*3))
                     player.addEffect(regeneration);
             }
     }

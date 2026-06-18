@@ -48,6 +48,7 @@
   "enchantment.machination.puppy": "Puppy",
   "enchantment.machination.puppy.desc": "Makes the target (if a player) unable to properly speak in chat and must recite the sacred texts in order to fix it :3",
   "text.machination.woof_warning": "<--- Gotta 'woof :3' in order to speak",
+  "text.machination.puppified": "You've been §mcursed§r puppified!",
 
   "item.machination.withering_bash": "Withering Bash",
   "text.machination.withering_bash.ammo": "Utilises Wither Skeleton Skulls as ammunition",
@@ -88,6 +89,7 @@
   "enchantment.machination.brute.desc": "Gain a movement speed increase and a great amount of protection from incoming damage",
   "enchantment.machination.bulwart": "Bulwart",
   "enchantment.machination.bulwart.desc": "Hold crouch for a small duration to release a cloud of fungal fumes, gaining Resistance V while active",
+  "text.machination.bulwart_cooldown": "Hold [%s] For %s More Seconds",
 
   "item.machination.shadowkin_growth": "Shadowkin Growth",
   "text.machination.shadowkin_growth.vibration_detection": "While wearing, §aSculk Sensors and ",
@@ -98,7 +100,7 @@
   "enchantment.machination.infest": "Infest",
   "enchantment.machination.infest.desc": "Slows down other entities within a radius if the wearer and the target is standing on Sculk blocks",
   "enchantment.machination.catatonic": "Catatonic",
-  "enchantment.machination.catatonic.desc": "Makes the wearer significantly weaker while not standing on Sculk blocks, but grants a speed and damage boost otherwise",
+  "enchantment.machination.catatonic.desc": "Disables the base behaviour of Shadowkin tier boots, instead slowing the wearer down upon a vibration being detected. However, grants Strength V under the same condition.",
 
   "item.machination.prismatic_shuffler": "Prismatic Shuffler",
   "text.machination.prismatic_shuffler.mining_fatigue_rid_of": "Upon use, forbids §aMining Fatigue from ",

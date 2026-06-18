@@ -17,6 +17,11 @@ public class MachinationUtils {
             player.getCooldowns().addCooldown(player.getItemInHand(player.getUsedItemHand()).getItem(), 20*cooldown);
     }
 
+    public static void createCooldown(Player player, ItemStack stack, int cooldown) {
+        if (!player.getAbilities().instabuild)
+            player.getCooldowns().addCooldown(stack.getItem(), 20*cooldown);
+    }
+
     public static void createCooldownAndDecrement(Player player, int cooldown, int decrement) {
         if (!player.getAbilities().instabuild) {
             player.getCooldowns().addCooldown(player.getItemInHand(player.getUsedItemHand()).getItem(), 20 * cooldown);

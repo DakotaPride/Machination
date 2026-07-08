@@ -9,9 +9,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SculkShriekerBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
+import net.minecraft.world.phys.Vec3;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -28,10 +32,29 @@ public class ItemMixin {
             BlockState state = level.getBlockState(pos);
             ItemStack stack = context.getItemInHand();
             Player player = context.getPlayer();
-            if (player != null && state.getBlock() instanceof SculkShriekerBlock && state.getValue(BlockStateProperties.CAN_SUMMON) && stack.is(Items.GLASS_BOTTLE)) {
-                player.addItem(new ItemStack(ItemsRegistrar.SOUL_BOTTLE.get(), 1));
-                stack.shrink(1);
-                level.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.CAN_SUMMON, false));
+            if (player != null && state.getBlock() instanceof SculkShriekerBlock
+                    && state.getValue(BlockStateProperties.CAN_SUMMON) && level.getBlockState(pos.below()).is(Blocks.SOUL_CAMPFIRE)
+                    && stack.is(Items.DRAGON_BREATH)) {
+                ItemStack newStack = new ItemStack(ItemsRegistrar.SOUL_BOTTLE.get());
+                if (!player.getAbilities().instabuild) {
+                    if (!player.getInventory().add(newStack)) {
+                        stack.shrink(1);
+                        if (player.getItemInHand(context.getHand()).getCount() <= 1)
+                            player.setItemInHand(context.getHand(), newStack);
+                        else player.drop(newStack, false);
+                    } else {
+                        stack.shrink(1);
+                        player.getInventory().add(newStack);
+                    }
+                } else {
+                    if (!player.getInventory().add(newStack)) {
+                        player.drop(newStack, false);
+                    } else {
+                        player.getInventory().add(newStack);
+                    }
+                }
+
+                player.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
                 cir.setReturnValue(InteractionResult.sidedSuccess(true));
             }
         }

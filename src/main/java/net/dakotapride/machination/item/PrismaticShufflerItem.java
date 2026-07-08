@@ -1,6 +1,5 @@
 package net.dakotapride.machination.item;
 
-import net.dakotapride.machination.Machination;
 import net.dakotapride.machination.registrar.AdvancementRegistrar;
 import net.dakotapride.machination.registrar.EnchantmentRegistrar;
 import net.dakotapride.machination.util.MachinationUtils;
@@ -23,7 +22,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
@@ -79,8 +77,11 @@ public class PrismaticShufflerItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        if (hasSharptoothEnchantment(player))
+        if (hasSharptoothEnchantment(player)) {
+            if (player instanceof ServerPlayer serverPlayer)
+                serverPlayer.sendSystemMessage(Component.translatable("text.machination.prismatic_shuffler.sharptooth.warning").withStyle(ChatFormatting.GRAY), true);
             return super.use(level, player, hand);
+        }
         else return ItemUtils.startUsingInstantly(level, player, hand);
     }
 

@@ -69,6 +69,7 @@ public class Machination {
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
             event.accept(BlocksRegistrar.COBALT_ORE);
             event.accept(BlocksRegistrar.DEEPSLATE_COBALT_ORE);
+            event.accept(BlocksRegistrar.NETHERRACK_COBALT_ORE);
         }
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(BlocksRegistrar.COBALT_BLOCK);

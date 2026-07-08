@@ -1,0 +1,72 @@
+{
+  "name": "Sampling Divinity",
+  "icon": "machination:cobalt_phial_ender_dragon",
+  "category": "machination:phials",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Notes$(br)$()What defines a divine being? Such creatures surely are few and far between! But, regardless of that, I think I have a good starting point to take some guesses...$(br)$(br)$(l)Oinking Protectors of Ash-Struck Monument$(br)$()These vile beasts have to be blessed by an ancient swine deity to be so deadly compared to their rugged counterparts!"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:piglin_brute",
+      "rotate": false,
+      "default_rotation": 45
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Spiked Pests$(br)$()Somehow the lesser creatures who happen to be granted divine ordinance are always the annoying ones - and this seems no different. Beams of harmful, strange power emit from their eye socket once their target has the misfortune of swimming into their line of sight."
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:guardian",
+      "rotate": false,
+      "default_rotation": 45,
+      "scale": 0.45
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Elders$(br)$()Besmirched gods who have resided in their monument, using the energy coursing through them and their prismarine chambers to inflict ailments upon sailors and forbid them from entering."
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:elder_guardian",
+      "rotate": false,
+      "default_rotation": 45,
+      "scale": 0.65
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Three-headed Monstrosity$(br)$()A deity of foreign creation - this daemonic host of torture and souls exists purely out of the hate and suffering born from humanity's past and mistakes..."
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:wither",
+      "rotate": false,
+      "default_rotation": 45,
+      "scale": 0.85
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Prisoner of Mold, yet it's Peacekeeper$(br)$()Perhaps I've underestimated the joys of peace and quiet, or I'm sure that's what this... Creature? Apparition? This... Whatever it may be, it certainly did not like any of the noises I made during my journey down below."
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:warden",
+      "rotate": false,
+      "default_rotation": 45,
+      "scale": 0.85
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(l)Beast of Savage, Desolatic Energy$(br)$()Quite the nuisance in my discoveries, but finally - I've discovered a deity in true form of a dastardly habitat, a ruler of slender creatures with lavender eyes and a summoner of scorching, mystic flame!"
+    },
+    {
+      "type": "patchouli:entity",
+      "entity": "minecraft:ender_dragon",
+      "rotate": false,
+      "default_rotation": 135,
+      "scale": 1.0
+    }
+  ]
+}

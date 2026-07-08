@@ -1,6 +1,5 @@
 package net.dakotapride.machination.item;
 
-import net.dakotapride.machination.Machination;
 import net.dakotapride.machination.entity.BetterAOECloud;
 import net.dakotapride.machination.registrar.AdvancementRegistrar;
 import net.dakotapride.machination.registrar.EnchantmentRegistrar;
@@ -8,7 +7,6 @@ import net.dakotapride.machination.util.MachinationUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -18,11 +16,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.player.AdvancementEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -86,6 +81,9 @@ public class FlaskOfDesolaticBurstItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if (hasFinalStandEnchantment(player) && player instanceof ServerPlayer serverPlayer)
+            serverPlayer.sendSystemMessage(Component.translatable("text.machination.flask_of_desolatic_burst.final_stand.warning").withStyle(ChatFormatting.GRAY), true);
+
         return hasFinalStandEnchantment(player) ? super.use(level, player, hand) : ItemUtils.startUsingInstantly(level, player, hand);
     }
 
@@ -104,7 +102,7 @@ public class FlaskOfDesolaticBurstItem extends Item {
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int i, boolean b) {
         if (entity instanceof Player player && player.getOffhandItem().getEnchantmentLevel(EnchantmentRegistrar.FINAL_STAND.get()) > 0 && !player.getCooldowns().isOnCooldown(stack.getItem())) {
-            if (player.getHealth() == 1 && player.getOffhandItem() == stack) {
+            if (player.getHealth() <= 8 && player.getOffhandItem() == stack) {
                 BetterAOECloud cloud = new BetterAOECloud(level, player.getX(), player.getY(), player.getZ());
                 if (!level.isClientSide) {
                     createAreaEffectCloud(cloud, player);
@@ -122,7 +120,6 @@ public class FlaskOfDesolaticBurstItem extends Item {
         Level level = player.level();
         cloud.setOwner(player);
         cloud.getTags().add("FromFlaskOfDesolaticBurst");
-        cloud.addEffect(new MobEffectInstance(MobEffects.HARM));
         if (hasHazardousEnchantment(player)) {
             cloud.addEffect(new MobEffectInstance(MobEffects.POISON));
             cloud.setParticle(ParticleTypes.ENTITY_EFFECT);
@@ -132,8 +129,9 @@ public class FlaskOfDesolaticBurstItem extends Item {
             cloud.setParticle(ParticleTypes.FLAME);
         } else {
             cloud.setParticle(ParticleTypes.DRAGON_BREATH);
+            cloud.addEffect(new MobEffectInstance(MobEffects.HARM));
         }
-        float radius = hasFinalStandEnchantment(player) ? (hasEnlargeEnchantment(player) ? 20.0F : 10.0F) : (hasEnlargeEnchantment(player) ? 15.0F : 10.0F);
+        float radius = hasFinalStandEnchantment(player) ? (hasEnlargeEnchantment(player) ? 12.0F : 7.0F) : (hasEnlargeEnchantment(player) ? 7.0F : 5.0F);
         cloud.setRadius(radius);
         cloud.setDuration(100);
         level.addFreshEntity(cloud);

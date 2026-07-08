@@ -1,0 +1,18 @@
+{
+  "name": "Enforced Gear",
+  "icon": "machination:enforced_chestplate",
+  "category": "machination:tools",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "machination:enforced_chestplate",
+      "text": "As annoying as these blasted pig worshippers are, they seem to respect the dignified, gilded look of this gear just as much as their standard, golden equipment."
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "Creation",
+      "recipe": "machination:enforcement_upgrade",
+      "text": "Combining this relic of gilded smithery with a Golden Chestplate and Ingot enforces the chestplate to be able to withstand intense heat. Perhaps a grace of the deities who have blessed these protectors in the first place has survived within the sample."
+    }
+  ]
+}

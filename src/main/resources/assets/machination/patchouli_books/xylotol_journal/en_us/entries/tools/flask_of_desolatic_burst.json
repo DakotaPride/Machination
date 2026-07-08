@@ -1,0 +1,17 @@
+{
+  "name": "Flask of Desolatic Burst",
+  "icon": "machination:flask_of_desolatic_burst",
+  "category": "machination:tools",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "machination:flask_of_desolatic_burst",
+      "text": ""
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "Creation",
+      "recipe": "machination:flask_of_desolatic_burst"
+    }
+  ]
+}

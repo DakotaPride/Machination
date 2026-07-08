@@ -1,0 +1,12 @@
+{
+  "name": "Bottle of Souls",
+  "icon": "machination:soul_bottle",
+  "category": "machination:other",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "machination:soul_bottle",
+      "text": "A bottle containing a vile beast's breath seems to suffice just enough divine energy to rile up the souls trapped within this infestation that have taken hold of them. Though, to release them out to be captured, an accursed flame must be placed beneath in moderation."
+    }
+  ]
+}

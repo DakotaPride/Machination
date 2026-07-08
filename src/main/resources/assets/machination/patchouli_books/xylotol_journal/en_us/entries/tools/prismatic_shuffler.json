@@ -1,0 +1,17 @@
+{
+  "name": "Prismatic Shuffler",
+  "icon": "machination:prismatic_shuffler",
+  "category": "machination:tools",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "machination:prismatic_shuffler",
+      "text": ""
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "Creation",
+      "recipe": "machination:prismatic_shuffler"
+    }
+  ]
+}

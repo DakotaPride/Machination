@@ -1,0 +1,17 @@
+{
+  "name": "Shadowkin Gear",
+  "icon": "machination:shadowkin_growth",
+  "category": "machination:tools",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "machination:shadowkin_growth",
+      "text": ""
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "Creation",
+      "recipe": "machination:shadowkin_growth"
+    }
+  ]
+}

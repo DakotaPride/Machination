@@ -1,0 +1,17 @@
+{
+  "name": "Withering Bash",
+  "icon": "machination:withering_bash",
+  "category": "machination:tools",
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "machination:withering_bash",
+      "text": "Constructed from devilish energy of a three-headed beast, the souls of the damned flowing from the exhaust of it's maw wide agape, a cannon of which to shoot out skulls of it's own kin!"
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "Creation",
+      "recipe": "machination:withering_bash"
+    }
+  ]
+}

@@ -30,7 +30,7 @@ public class ItemsRegistrar {
     public static RegistryObject<FilledCobaltPhialItem> COBALT_PHIAL_ELDER_GUARDIAN = registerFilledCobaltPhialItem(DivineBeings.ELDER_GUARDIAN);
     public static RegistryObject<FilledCobaltPhialItem> COBALT_PHIAL_PIGLIN_BRUTE = registerFilledCobaltPhialItem(DivineBeings.PIGLIN_BRUTE);
     public static RegistryObject<FilledCobaltPhialItem> COBALT_PHIAL_GUARDIAN = registerFilledCobaltPhialItem(DivineBeings.GUARDIAN);
-    public static RegistryObject<Item> SOUL_BOTTLE = ITEMS.register("soul_bottle", () -> new Item(new Item.Properties()));
+    public static RegistryObject<SoulBottleItem> SOUL_BOTTLE = ITEMS.register("soul_bottle", () -> new SoulBottleItem(new Item.Properties()));
 
     // Cobalt Armour
     public static RegistryObject<CobaltGearItem> COBALT_LEGGINGS = ITEMS.register("cobalt_leggings", () -> new CobaltGearItem(ArmorItem.Type.LEGGINGS, new Item.Properties()));

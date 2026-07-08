@@ -1,11 +1,11 @@
 package net.dakotapride.machination.item;
 
-import net.dakotapride.machination.Machination;
 import net.dakotapride.machination.registrar.AdvancementRegistrar;
 import net.dakotapride.machination.registrar.EnchantmentRegistrar;
 import net.dakotapride.machination.util.BlockTags;
 import net.dakotapride.machination.util.MachinationArmourMaterials;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -21,7 +21,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.gameevent.vibrations.VibrationSystem;
 import net.minecraftforge.event.VanillaGameEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -60,8 +59,9 @@ public class ShadowkinGearItem extends ArmorItem {
     }
 
     public static boolean ableToStopVibrationDetection(Player player) {
-        return !hasCatatonicEnchantment(player) && player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof ShadowkinGearItem;
+        return !hasCatatonicEnchantment(player) || player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof ShadowkinGearItem;
     }
+
     public static void createCatatonicEffects(Player player) {
         MobEffectInstance slownessInstance = new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20*15, 1);
         MobEffectInstance strengthInstance = new MobEffectInstance(MobEffects.DAMAGE_BOOST, 20*15, 4);
@@ -111,7 +111,7 @@ public class ShadowkinGearItem extends ArmorItem {
         if (!event.isCanceled() && event.getCause() instanceof ServerPlayer player) {
             int frequency = VibrationSystem.getGameEventFrequency(event.getVanillaEvent());
             boolean correctFrequencies = frequency == 0 || frequency == 1 || frequency == 2 || frequency == 9 || frequency == 10 || frequency == 12 || frequency == 13;
-            if (event.isCancelable() && correctFrequencies) {
+            if (event.isCancelable() && correctFrequencies && player.getItemBySlot(EquipmentSlot.FEET).getItem() instanceof ShadowkinGearItem) {
                 if (ShadowkinGearItem.ableToStopVibrationDetection(player))
                     event.setCanceled(ShadowkinGearItem.ableToStopVibrationDetection(player));
                 else {

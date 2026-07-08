@@ -12,6 +12,7 @@ import net.dakotapride.machination.util.MachinationArmourMaterials;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
@@ -41,12 +42,6 @@ import java.util.UUID;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-    @Shadow
-    protected abstract int decreaseAirSupply(int p_21303_);
-
-    @Shadow
-    protected abstract int increaseAirSupply(int p_21307_);
-
     @Unique
     LivingEntity livingEntity = (LivingEntity) (Object) this;
     @Unique
@@ -95,6 +90,12 @@ public abstract class LivingEntityMixin extends Entity {
 
     }
 
+    @Inject(method = "tickDeath", at = @At("HEAD"))
+    private void tickDeath(CallbackInfo ci) {
+        if (livingEntity.getTags().contains("VulnerableToWardenAttacks"))
+            livingEntity.removeTag("VulnerableToWardenAttacks");
+    }
+
     @Inject(method = "hurt", at = @At("HEAD"), cancellable = true)
     private void hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (source.getDirectEntity() != null && source.getDirectEntity() instanceof WitherSkull skull && skull.getTags().contains("FromWitheringBashProjectile")) {
@@ -118,22 +119,6 @@ public abstract class LivingEntityMixin extends Entity {
             InteractionHand hand = player.getUsedItemHand();
             ItemStack stack = player.getItemInHand(hand);
             if (stack.getItem() instanceof CobaltPhialItem phialItem) {
-                if (CobaltPhialItem.hasBonkEnchantment(player) && phialItem.isEmptyPhial()) {
-                    double d0 = player.getX() - livingEntity.getX();
-
-                    double d1;
-                    for(d1 = player.getZ() - livingEntity.getZ(); d0 * d0 + d1 * d1 < 1.0E-4D; d1 = (Math.random() - Math.random()) * 0.01D) {
-                        d0 = (Math.random() - Math.random()) * 0.01D;
-                    }
-
-                    livingEntity.knockback(0.8F, d0, d1);
-                }
-
-                if (CobaltPhialItem.hasPuppyEnchantment(player) && livingEntity instanceof ServerPlayer playerTarget && phialItem.isEmptyPhial()) {
-                    playerTarget.addTag("StunlockedFromCuteness");
-                    playerTarget.sendSystemMessage(Component.translatable("text.machination.puppified"), true);
-                }
-
                 phialItem.createNewPhialInteraction(player, stack, livingEntity, hand, level,
                         ItemsRegistrar.COBALT_PHIAL_ENDER_DRAGON.get(), DivineBeings.ENDER_DRAGON.getEntityType());
                 phialItem.createNewPhialInteraction(player, stack, livingEntity, hand, level,
@@ -150,10 +135,14 @@ public abstract class LivingEntityMixin extends Entity {
                 boolean flag = livingEntity.getType().is(EntityTypeTags.BLACKLISTED_PHIAL_ENTITIES);
                 boolean flag2 = livingEntity.getType().is(EntityTypeTags.DIVINE_BEINGS);
                 if (!flag && phialItem.isEmptyPhial()) {
-                    level.playSound(player, player.blockPosition(), SoundsRegistrar.PHIAL_USE.get(), SoundSource.PLAYERS, 2.0F, 1.0F);
+                    if (CobaltPhialItem.hasSiphonEnchantment(player))
+                        level.playSound(player, player.blockPosition(), SoundsRegistrar.PHIAL_USE_SIPHON.get(), SoundSource.PLAYERS, 2.0F, 1.0F);
+                    else level.playSound(player, player.blockPosition(), SoundsRegistrar.PHIAL_USE.get(), SoundSource.PLAYERS, 2.0F, 1.0F);
                     if (flag2) {
                         level.playSound(player, player.blockPosition(), SoundsRegistrar.PHIAL_USE_DIVINE_BEING.get(), SoundSource.PLAYERS, 2.0F, 1.0F);
                     }
+                    if (CobaltPhialItem.hasPuppyEnchantment(player))
+                        level.playSound(player, player.blockPosition(), SoundEvents.WOLF_AMBIENT, SoundSource.PLAYERS, 1.0F, 1.0F);
                 }
             }
         }

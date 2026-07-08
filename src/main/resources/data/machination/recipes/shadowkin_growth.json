@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "C#C",
-    "S S"
+    "SBS"
   ],
   "key": {
     "C": {
@@ -11,11 +11,12 @@
     "#": {
       "item": "machination:cobalt_phial_warden"
     },
-    "S": [
-      {
-        "tag": "machination:sculk_blocks"
-      }
-    ]
+    "S": {
+      "tag": "machination:sculk_blocks"
+    },
+    "B": {
+      "item": "machination:soul_bottle"
+    }
   },
   "result": {
     "item": "machination:shadowkin_growth"

@@ -7,8 +7,8 @@ import net.dakotapride.machination.registrar.SoundsRegistrar;
 import net.dakotapride.machination.util.EntityTypeTags;
 import net.dakotapride.machination.util.MachinationUtils;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -21,14 +21,9 @@ import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
-import java.util.Map;
 
 public class CobaltPhialItem extends Item {
     boolean isEmptyPhial;
@@ -41,6 +36,10 @@ public class CobaltPhialItem extends Item {
 
     public boolean isEmptyPhial() {
         return isEmptyPhial;
+    }
+
+    public boolean isEmptyPhial(ItemStack stack) {
+        return this.isEmptyPhial() && stack.getItem() instanceof CobaltPhialItem;
     }
 
     public DivineBeings getDivineBeing() {
@@ -75,12 +74,27 @@ public class CobaltPhialItem extends Item {
     }
 
     public static void applyInjectionEffects(Player player, ItemStack stack, LivingEntity livingEntity, float damage) {
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 100));
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 100));
+        if (livingEntity instanceof Player) {
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 1));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100, 1));
+        } else {
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 100));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 100));
+        }
 
         if (hasSiphonEnchantment(player) && !(stack.getItem() instanceof FilledCobaltPhialItem))
             player.heal(damage);
         else livingEntity.hurt(livingEntity.damageSources().generic(), damage);
+
+
+        if (hasBonkEnchantment(player) && !(stack.getItem() instanceof FilledCobaltPhialItem)) {
+            double d0 = player.getX() - livingEntity.getX();
+            double d1;
+            for(d1 = player.getZ() - livingEntity.getZ(); d0 * d0 + d1 * d1 < 1.0E-4D; d1 = (Math.random() - Math.random()) * 0.01D) {
+                d0 = (Math.random() - Math.random()) * 0.01D;
+            }
+            livingEntity.knockback(0.8F, d0, d1);
+        }
 
         livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 100));
 
@@ -114,14 +128,12 @@ public class CobaltPhialItem extends Item {
     }
 
     public InteractionResult createNewPhialInteraction(Player player, ItemStack stack, LivingEntity target, InteractionHand hand, Level level, FilledCobaltPhialItem phialItem, EntityType<?> entityType) {
-        if (!player.getCooldowns().isOnCooldown(stack.getItem()) && this.isEmptyPhial()) {
+        if (!player.getCooldowns().isOnCooldown(stack.getItem()) && this.isEmptyPhial(stack)) {
             CobaltPhialItem.applyInjectionEffects(player, stack, target);
-            if (!level.isClientSide) {
-                if (target.getType() == entityType && !stack.isEnchanted())
-                    player.setItemInHand(hand, new ItemStack(phialItem));
-                if (!player.getAbilities().instabuild)
-                    MachinationUtils.createCooldown(player, stack, 300);
-            }
+            if (target.getType() == entityType && !stack.isEnchanted())
+                player.setItemInHand(hand, new ItemStack(phialItem));
+            if (!player.getAbilities().instabuild && !level.isClientSide)
+                MachinationUtils.createCooldown(player, stack, 300);
             return InteractionResult.SUCCESS;
         }
 
@@ -154,6 +166,8 @@ public class CobaltPhialItem extends Item {
             if (flag2) {
                 level.playSound(player, player.blockPosition(), SoundsRegistrar.PHIAL_USE_DIVINE_BEING.get(), SoundSource.PLAYERS, 2.0F, 1.0F);
             }
+            if (hasPuppyEnchantment(player))
+                level.playSound(player, player.blockPosition(), SoundEvents.WOLF_AMBIENT, SoundSource.PLAYERS, 1.0F, 1.0F);
         }
 
         return this.isEmptyPhial() ? (flag ? InteractionResult.FAIL : InteractionResult.SUCCESS) : super.interactLivingEntity(stack, player, target, hand);

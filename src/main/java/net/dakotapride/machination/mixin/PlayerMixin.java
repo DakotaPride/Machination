@@ -57,5 +57,10 @@ public abstract class PlayerMixin extends LivingEntity {
                 tag.putInt("RemoveRecentVibrationDataTicks", removeRecentVibrationDataTicks);
             }
         }
+
+        // Completely remove it from pre-existing instances
+        if (player.getTags().contains("StunlockedFromCuteness")) {
+            player.removeTag("StunlockedFromCuteness");
+        }
     }
 }
